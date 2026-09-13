@@ -657,15 +657,10 @@ body {
 */
 
 .series-row {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(15, var(--element-width));
-
+    grid-template-columns: repeat(15, var(--element-width));
     gap: var(--gap);
-
-    margin-left: 0;
+    margin-left: calc((var(--element-width) + var(--gap)) * 3);
 }
 
 
