@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
+
 /* =========================================
    RESET
 ========================================= */
@@ -11,19 +12,32 @@
 }
 
 
+/* =========================================
+   VARIABLES
+========================================= */
+
 :root {
+
     --background: #07111f;
     --background-secondary: #0b1b30;
 
     --text: #f5f7fb;
     --muted: #8e9bad;
 
-    --border: rgba(255, 255, 255, 0.10);
-    --card-background: rgba(255, 255, 255, 0.045);
-    --card-hover: rgba(255, 255, 255, 0.10);
+    --border: rgba(255, 255, 255, 0.09);
+
+    --card-background:
+        rgba(255, 255, 255, 0.045);
+
+    --card-hover:
+        rgba(255, 255, 255, 0.09);
 
     --gap: 6px;
-    --radius: 9px;
+
+    --element-width: 72px;
+    --element-height: 94px;
+
+    --radius: 10px;
 }
 
 
@@ -32,6 +46,7 @@
 ========================================= */
 
 body {
+
     min-height: 100vh;
 
     background:
@@ -54,7 +69,7 @@ body {
         Arial,
         sans-serif;
 
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 
@@ -63,9 +78,15 @@ body {
 ========================================= */
 
 .page {
-    width: max-content;
-    min-width: 100%;
-    padding: 45px 40px 60px;
+
+    width: 100%;
+
+    min-width: max-content;
+
+    padding:
+        45px
+        40px
+        70px;
 }
 
 
@@ -74,89 +95,157 @@ body {
 ========================================= */
 
 .header {
-    width: min(1600px, calc(100vw - 80px));
 
-    margin: 0 auto 40px;
+    width:
+        min(
+            1600px,
+            calc(100vw - 80px)
+        );
+
+    margin:
+        0 auto 42px;
 
     display: flex;
+
     align-items: flex-end;
+
     justify-content: space-between;
 }
 
 
+.header-content {
+    min-width: 0;
+}
+
+
 .eyebrow {
-    margin-bottom: 8px;
+
+    margin-bottom: 9px;
 
     color: #7da8ff;
 
-    font-size: 12px;
+    font-size: 11px;
+
     font-weight: 700;
 
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
 }
 
 
 .header h1 {
-    font-size: clamp(32px, 4vw, 52px);
+
+    font-size:
+        clamp(
+            34px,
+            4vw,
+            52px
+        );
+
+    line-height: 1;
 
     font-weight: 700;
 
-    letter-spacing: -0.04em;
+    letter-spacing: -0.045em;
 }
 
 
 .subtitle {
-    margin-top: 8px;
+
+    margin-top: 10px;
 
     color: var(--muted);
 
-    font-size: 15px;
-}
+    font-size: 14px;
 
-
-.element-count {
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-end;
-
-    color: var(--muted);
-}
-
-
-.element-count strong {
-    color: var(--text);
-
-    font-size: 28px;
-}
-
-
-.element-count span {
-    font-size: 12px;
-    text-transform: uppercase;
-
-    letter-spacing: 0.12em;
+    font-weight: 400;
 }
 
 
 /* =========================================
-   PERIODIC TABLE
+   ELEMENT COUNT
+========================================= */
+
+.element-count {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 2px;
+}
+
+
+.element-count strong {
+
+    color: var(--text);
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+.element-count span {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* =========================================
+   TABLE SECTION
 ========================================= */
 
 .table-section {
+
     width: max-content;
+
     margin: 0 auto;
 }
 
 
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.table-wrapper {
+
+    width: max-content;
+
+    overflow: visible;
+}
+
+
+/* =========================================
+   MAIN PERIODIC TABLE
+========================================= */
+
 .periodic-table {
+
     display: grid;
 
     grid-template-columns:
-        repeat(18, 72px);
+        repeat(
+            18,
+            var(--element-width)
+        );
 
     grid-template-rows:
-        repeat(7, 92px);
+        repeat(
+            7,
+            var(--element-height)
+        );
 
     gap: var(--gap);
 }
@@ -167,22 +256,34 @@ body {
 ========================================= */
 
 .element {
+
     position: relative;
 
-    width: 72px;
-    height: 92px;
+    width: var(--element-width);
 
-    padding: 8px;
+    height: var(--element-height);
 
-    border: 1px solid var(--border);
+    padding:
+        8px
+        8px
+        7px;
+
+    border:
+        1px solid
+        var(--border);
+
     border-radius: var(--radius);
 
-    background: var(--card-background);
+    background:
+        var(--card-background);
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: space-between;
+
+    overflow: hidden;
 
     cursor: pointer;
 
@@ -194,59 +295,135 @@ body {
 }
 
 
+/* subtle inner highlight */
+
+.element::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.045),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
 .element:hover {
-    z-index: 10;
 
-    transform: translateY(-5px) scale(1.04);
+    z-index: 20;
 
-    background: var(--card-hover);
+    transform:
+        translateY(-5px)
+        scale(1.045);
 
-    border-color: rgba(255, 255, 255, 0.25);
+    background:
+        var(--card-hover);
+
+    border-color:
+        rgba(255, 255, 255, 0.22);
 
     box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.25);
+        0 14px 35px
+        rgba(0, 0, 0, 0.28);
 }
 
+
+/* =========================================
+   ATOMIC NUMBER
+========================================= */
 
 .atomic-number {
+
+    position: relative;
+
     color: var(--muted);
 
-    font-size: 10px;
+    font-size: 9px;
+
     font-weight: 600;
+
+    line-height: 1;
 }
 
 
+/* =========================================
+   SYMBOL
+========================================= */
+
 .symbol {
+
+    position: relative;
+
     margin-top: auto;
 
-    font-size: 28px;
+    color: var(--text);
+
+    font-size: 27px;
+
     line-height: 1;
 
     font-weight: 700;
 
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
 }
 
 
+/* =========================================
+   ELEMENT NAME
+========================================= */
+
 .element-name {
-    margin-top: 5px;
+
+    position: relative;
+
+    margin-top: 6px;
 
     color: var(--muted);
 
-    font-size: 8px;
+    font-size: 7.5px;
+
+    font-weight: 500;
+
+    line-height: 1.2;
 
     white-space: nowrap;
+
     overflow: hidden;
+
     text-overflow: ellipsis;
 }
 
 
+/* =========================================
+   ATOMIC MASS
+========================================= */
+
 .atomic-mass {
+
+    position: relative;
+
     margin-top: 4px;
 
-    color: rgba(255, 255, 255, 0.65);
+    color:
+        rgba(255, 255, 255, 0.58);
 
-    font-size: 8px;
+    font-size: 7px;
+
+    font-weight: 500;
+
+    line-height: 1;
 }
 
 
@@ -258,46 +435,37 @@ body {
     border-top: 2px solid #ef4444;
 }
 
-
 .element.alkaline-earth-metal {
     border-top: 2px solid #f97316;
 }
-
 
 .element.transition-metal {
     border-top: 2px solid #f59e0b;
 }
 
-
 .element.post-transition-metal {
     border-top: 2px solid #94a3b8;
 }
-
 
 .element.metalloid {
     border-top: 2px solid #22c55e;
 }
 
-
 .element.nonmetal {
     border-top: 2px solid #06b6d4;
 }
-
 
 .element.halogen {
     border-top: 2px solid #a855f7;
 }
 
-
 .element.noble-gas {
     border-top: 2px solid #3b82f6;
 }
 
-
 .element.lanthanide {
     border-top: 2px solid #ec4899;
 }
-
 
 .element.actinide {
     border-top: 2px solid #d946ef;
@@ -305,45 +473,60 @@ body {
 
 
 /* =========================================
-   SERIES
+   F-BLOCK
 ========================================= */
 
 .series-container {
-    margin-top: 28px;
+
+    margin-top: 30px;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 8px;
 }
 
 
-.series-row {
-    display: grid;
-
-    grid-template-columns:
-        repeat(15, 72px);
-
-    gap: var(--gap);
-
-    margin-left: 222px;
-}
-
-
 .series-label {
-    height: 18px;
+
+    height: 17px;
 
     display: flex;
+
     align-items: center;
 
     color: var(--muted);
 
-    font-size: 10px;
+    font-size: 9px;
+
     font-weight: 700;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
+}
+
+
+/*
+   The first column is intentionally empty.
+
+   This aligns:
+   Ce–Lu with Groups 4–17
+   Th–Lr with Groups 4–17
+*/
+
+.series-row {
+
+    display: grid;
+
+    grid-template-columns:
+        72px
+        repeat(14, 72px);
+
+    gap: var(--gap);
+
+    margin-left: 0;
 }
 
 
@@ -352,54 +535,75 @@ body {
 ========================================= */
 
 .legend {
-    width: min(1600px, calc(100vw - 80px));
 
-    margin: 45px auto 0;
+    width:
+        min(
+            1600px,
+            calc(100vw - 80px)
+        );
+
+    margin:
+        48px auto 0;
 
     padding-top: 25px;
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid
+        var(--border);
 }
 
 
 .legend-title {
+
     margin-bottom: 16px;
 
     color: var(--muted);
 
-    font-size: 11px;
+    font-size: 10px;
+
     font-weight: 700;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
 }
 
 
 .legend-items {
+
     display: flex;
 
     flex-wrap: wrap;
 
-    gap: 12px 24px;
+    gap:
+        12px
+        24px;
 }
 
 
 .legend-item {
+
     display: flex;
 
     align-items: center;
+
     gap: 7px;
 
     color: var(--muted);
 
-    font-size: 11px;
+    font-size: 10px;
+
+    font-weight: 500;
 }
 
 
 .legend-dot {
+
     width: 8px;
+
     height: 8px;
+
+    flex-shrink: 0;
 
     border-radius: 50%;
 }
@@ -451,33 +655,54 @@ body {
 
 
 /* =========================================
-   RESPONSIVE
+   MOBILE / SMALL SCREENS
 ========================================= */
 
 @media (max-width: 900px) {
 
-    .page {
-        padding: 30px 20px 50px;
+    body {
+        overflow-x: auto;
     }
 
+
+    .page {
+
+        min-width: max-content;
+
+        padding:
+            30px
+            20px
+            50px;
+    }
+
+
     .header {
+
         width: 100%;
+
         margin-bottom: 30px;
     }
+
 
     .header h1 {
         font-size: 36px;
     }
 
+
     .subtitle {
-        font-size: 13px;
+        font-size: 12px;
     }
+
 
     .element-count {
         display: none;
     }
 
+
     .legend {
+
         width: 100%;
+
+        max-width: 1296px;
     }
 }
