@@ -610,13 +610,6 @@ function openElementDetails(
     ------------------------------------- */
 
     document.getElementById(
-        "detail-discovered-by"
-    ).textContent =
-        details.discovered_by
-        || "Unknown";
-
-
-    document.getElementById(
         "detail-discovery-year"
     ).textContent =
         formatDiscoveryYear(
