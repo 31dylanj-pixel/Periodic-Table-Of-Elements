@@ -469,11 +469,9 @@ function openElementDetails(
 
 
     document.getElementById(
-        "detail-description"
-    ).textContent =
-        details.summary
-        || `${element.name} is a chemical element.`;
-
+       "detail-description"
+   ).textContent =
+       details.summary || "";
 
     /* -------------------------------------
        QUICK STATS
