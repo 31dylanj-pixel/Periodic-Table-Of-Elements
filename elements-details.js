@@ -1,233 +1,16 @@
 /* =========================================
-   ELEMENT DETAILS DATA
-========================================= */
+   ELEMENT DETAILS
+   ========================================= */
 
-const elementDetails = {
+/*
+    Element data is loaded from:
+    PeriodicTableOfElements.org
 
-    /* =====================================
-       HYDROGEN
-    ===================================== */
+    The API provides data for all 118 elements.
+*/
 
-    H: {
 
-        description:
-            "Hydrogen is the lightest element and the most abundant element in the universe.",
-
-        electronConfiguration:
-            "1s¹",
-
-        nobleConfiguration:
-            "1s¹",
-
-        shells:
-            "1",
-
-        valenceElectrons:
-            "1",
-
-        commonIons:
-            "H⁺",
-
-        electronegativity:
-            "2.20",
-
-        ionizationEnergy:
-            "1312 kJ/mol",
-
-        electronAffinity:
-            "72.8 kJ/mol",
-
-        atomicRadius:
-            "53 pm",
-
-        density:
-            "0.0899 g/L",
-
-        meltingPoint:
-            "−259.16 °C",
-
-        boilingPoint:
-            "−252.87 °C",
-
-        state:
-            "Gas",
-
-        discoveredBy:
-            "Henry Cavendish",
-
-        discoveryYear:
-            "1766"
-    },
-
-
-    /* =====================================
-       HELIUM
-    ===================================== */
-
-    He: {
-
-        description:
-            "Helium is a colorless, odorless noble gas and the second-lightest element.",
-
-        electronConfiguration:
-            "1s²",
-
-        nobleConfiguration:
-            "1s²",
-
-        shells:
-            "2",
-
-        valenceElectrons:
-            "2",
-
-        commonIons:
-            "None",
-
-        electronegativity:
-            "—",
-
-        ionizationEnergy:
-            "2372 kJ/mol",
-
-        electronAffinity:
-            "—",
-
-        atomicRadius:
-            "31 pm",
-
-        density:
-            "0.1785 g/L",
-
-        meltingPoint:
-            "−272.20 °C",
-
-        boilingPoint:
-            "−268.93 °C",
-
-        state:
-            "Gas",
-
-        discoveredBy:
-            "Pierre Janssen / Norman Lockyer",
-
-        discoveryYear:
-            "1868"
-    },
-
-
-    /* =====================================
-       CARBON
-    ===================================== */
-
-    C: {
-
-        description:
-            "Carbon is a versatile nonmetal that forms the basis of many compounds and is essential to life.",
-
-        electronConfiguration:
-            "1s² 2s² 2p²",
-
-        nobleConfiguration:
-            "[He] 2s² 2p²",
-
-        shells:
-            "2, 4",
-
-        valenceElectrons:
-            "4",
-
-        commonIons:
-            "C⁴⁺ / C⁴⁻",
-
-        electronegativity:
-            "2.55",
-
-        ionizationEnergy:
-            "1086.5 kJ/mol",
-
-        electronAffinity:
-            "121.8 kJ/mol",
-
-        atomicRadius:
-            "70 pm",
-
-        density:
-            "2.267 g/cm³",
-
-        meltingPoint:
-            "3550 °C",
-
-        boilingPoint:
-            "4027 °C",
-
-        state:
-            "Solid",
-
-        discoveredBy:
-            "Known since antiquity",
-
-        discoveryYear:
-            "Ancient"
-    },
-
-
-    /* =====================================
-       CHLORINE
-    ===================================== */
-
-    Cl: {
-
-        description:
-            "Chlorine is a reactive halogen commonly found in compounds such as sodium chloride.",
-
-        electronConfiguration:
-            "1s² 2s² 2p⁶ 3s² 3p⁵",
-
-        nobleConfiguration:
-            "[Ne] 3s² 3p⁵",
-
-        shells:
-            "2, 8, 7",
-
-        valenceElectrons:
-            "7",
-
-        commonIons:
-            "Cl⁻",
-
-        electronegativity:
-            "3.16",
-
-        ionizationEnergy:
-            "1251.2 kJ/mol",
-
-        electronAffinity:
-            "349 kJ/mol",
-
-        atomicRadius:
-            "99 pm",
-
-        density:
-            "3.214 g/L",
-
-        meltingPoint:
-            "−101.5 °C",
-
-        boilingPoint:
-            "−34.04 °C",
-
-        state:
-            "Gas",
-
-        discoveredBy:
-            "Carl Wilhelm Scheele",
-
-        discoveryYear:
-            "1774"
-    }
-
-};
+let detailedElements = {};
 
 
 /* =========================================
@@ -264,7 +47,22 @@ const categoryNames = {
         "Lanthanide",
 
     "actinide":
-        "Actinide"
+        "Actinide",
+
+    "alkali_metal":
+        "Alkali Metal",
+
+    "alkaline_earth_metal":
+        "Alkaline Earth Metal",
+
+    "transition_metal":
+        "Transition Metal",
+
+    "post_transition_metal":
+        "Post-transition Metal",
+
+    "noble_gas":
+        "Noble Gas"
 
 };
 
@@ -277,7 +75,9 @@ const elementModal =
     document.getElementById("element-modal");
 
 const elementModalClose =
-    document.getElementById("element-modal-close");
+    document.getElementById(
+        "element-modal-close"
+    );
 
 const elementModalBackdrop =
     document.querySelector(
@@ -286,18 +86,347 @@ const elementModalBackdrop =
 
 
 /* =========================================
+   FORMAT ELECTRON CONFIGURATION
+========================================= */
+
+function formatElectronConfiguration(
+    configuration
+) {
+
+    if (!configuration) {
+        return "—";
+    }
+
+    return configuration
+        .replace(/(\d)([spdf])(\d+)/g, "$1$2$3");
+}
+
+
+/* =========================================
+   FORMAT SHELLS
+========================================= */
+
+function formatShells(shells) {
+
+    if (!shells) {
+        return "—";
+    }
+
+    if (Array.isArray(shells)) {
+        return shells.join(", ");
+    }
+
+    return shells;
+}
+
+
+/* =========================================
+   FORMAT NUMBERS
+========================================= */
+
+function formatValue(
+    value,
+    unit = ""
+) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+        return "—";
+    }
+
+    return `${value}${unit}`;
+}
+
+
+/* =========================================
+   FORMAT TEMPERATURE
+========================================= */
+
+function kelvinToCelsius(
+    kelvin
+) {
+
+    if (
+        kelvin === null ||
+        kelvin === undefined
+    ) {
+        return "—";
+    }
+
+    const celsius =
+        kelvin - 273.15;
+
+    return `${celsius.toFixed(2)} °C`;
+}
+
+
+/* =========================================
+   FORMAT DISCOVERY YEAR
+========================================= */
+
+function formatDiscoveryYear(
+    year
+) {
+
+    if (
+        year === null ||
+        year === undefined
+    ) {
+        return "—";
+    }
+
+    if (year < 0) {
+        return `${Math.abs(year)} BCE`;
+    }
+
+    return year;
+}
+
+
+/* =========================================
+   GET COMMON IONS
+========================================= */
+
+function getCommonIons(
+    element
+) {
+
+    /*
+       Some elements have particularly
+       recognizable common ions.
+
+       For transition metals and other
+       variable-valence elements, the API's
+       oxidation states are used as a
+       reasonable representation.
+    */
+
+    const commonIons = {
+
+        H: "H⁺",
+
+        Li: "Li⁺",
+        Be: "Be²⁺",
+
+        Na: "Na⁺",
+        Mg: "Mg²⁺",
+
+        Al: "Al³⁺",
+
+        K: "K⁺",
+        Ca: "Ca²⁺",
+
+        Sc: "Sc³⁺",
+        Ti: "Ti²⁺, Ti³⁺, Ti⁴⁺",
+        V: "V²⁺, V³⁺, V⁴⁺, V⁵⁺",
+        Cr: "Cr²⁺, Cr³⁺",
+        Mn: "Mn²⁺, Mn⁴⁺, Mn⁷⁺",
+        Fe: "Fe²⁺, Fe³⁺",
+        Co: "Co²⁺, Co³⁺",
+        Ni: "Ni²⁺, Ni³⁺",
+        Cu: "Cu⁺, Cu²⁺",
+        Zn: "Zn²⁺",
+
+        Ga: "Ga³⁺",
+        Ge: "Ge²⁺, Ge⁴⁺",
+        As: "As³⁻, As³⁺, As⁵⁺",
+        Se: "Se²⁻, Se⁴⁺, Se⁶⁺",
+
+        Rb: "Rb⁺",
+        Sr: "Sr²⁺",
+        Y: "Y³⁺",
+        Zr: "Zr⁴⁺",
+        Nb: "Nb³⁺, Nb⁵⁺",
+        Mo: "Mo³⁺, Mo⁶⁺",
+        Tc: "Tc⁴⁺, Tc⁷⁺",
+        Ru: "Ru³⁺, Ru⁴⁺",
+        Rh: "Rh³⁺",
+        Pd: "Pd²⁺, Pd⁴⁺",
+        Ag: "Ag⁺",
+        Cd: "Cd²⁺",
+
+        In: "In⁺, In³⁺",
+        Sn: "Sn²⁺, Sn⁴⁺",
+        Sb: "Sb³⁺, Sb⁵⁺",
+        Te: "Te²⁻, Te⁴⁺, Te⁶⁺",
+
+        Cs: "Cs⁺",
+        Ba: "Ba²⁺",
+
+        La: "La³⁺",
+        Ce: "Ce³⁺, Ce⁴⁺",
+        Pr: "Pr³⁺, Pr⁴⁺",
+        Nd: "Nd³⁺",
+        Pm: "Pm³⁺",
+        Sm: "Sm²⁺, Sm³⁺",
+        Eu: "Eu²⁺, Eu³⁺",
+        Gd: "Gd³⁺",
+        Tb: "Tb³⁺, Tb⁴⁺",
+        Dy: "Dy³⁺",
+        Ho: "Ho³⁺",
+        Er: "Er³⁺",
+        Tm: "Tm²⁺, Tm³⁺",
+        Yb: "Yb²⁺, Yb³⁺",
+        Lu: "Lu³⁺",
+
+        Hf: "Hf⁴⁺",
+        Ta: "Ta⁵⁺",
+        W: "W⁴⁺, W⁶⁺",
+        Re: "Re⁴⁺, Re⁶⁺, Re⁷⁺",
+        Os: "Os⁴⁺, Os⁸⁺",
+        Ir: "Ir³⁺, Ir⁴⁺",
+        Pt: "Pt²⁺, Pt⁴⁺",
+        Au: "Au⁺, Au³⁺",
+        Hg: "Hg₂²⁺, Hg²⁺",
+
+        Tl: "Tl⁺, Tl³⁺",
+        Pb: "Pb²⁺, Pb⁴⁺",
+        Bi: "Bi³⁺, Bi⁵⁺",
+
+        Po: "Po²⁺, Po⁴⁺",
+        At: "At⁻",
+
+        Fr: "Fr⁺",
+        Ra: "Ra²⁺",
+
+        Ac: "Ac³⁺",
+        Th: "Th⁴⁺",
+        Pa: "Pa⁴⁺, Pa⁵⁺",
+        U: "U³⁺, U⁴⁺, U⁵⁺, U⁶⁺",
+        Np: "Np³⁺, Np⁴⁺, Np⁵⁺, Np⁶⁺",
+        Pu: "Pu³⁺, Pu⁴⁺, Pu⁵⁺, Pu⁶⁺",
+        Am: "Am³⁺",
+        Cm: "Cm³⁺",
+        Bk: "Bk³⁺, Bk⁴⁺",
+        Cf: "Cf³⁺",
+        Es: "Es³⁺",
+        Fm: "Fm³⁺",
+        Md: "Md²⁺, Md³⁺",
+        No: "No²⁺, No³⁺",
+        Lr: "Lr³⁺",
+
+        Rf: "Rf⁴⁺",
+        Db: "Db⁵⁺",
+        Sg: "Sg⁶⁺",
+        Bh: "Bh⁷⁺",
+        Hs: "Hs⁸⁺",
+        Mt: "Mt³⁺",
+        Ds: "Ds²⁺, Ds⁴⁺",
+        Rg: "Rg⁺, Rg³⁺",
+        Cn: "Cn²⁺",
+        Nh: "Nh⁺, Nh³⁺",
+        Fl: "Fl²⁺, Fl⁴⁺",
+        Mc: "Mc⁺, Mc³⁺",
+        Lv: "Lv²⁺, Lv⁴⁺",
+        Ts: "Ts⁻",
+        Og: "None"
+
+    };
+
+    return commonIons[element.symbol]
+        || "None";
+}
+
+
+/* =========================================
+   GET VALENCE ELECTRONS
+========================================= */
+
+function getValenceElectrons(
+    element
+) {
+
+    if (
+        element.electrons_per_shell &&
+        Array.isArray(
+            element.electrons_per_shell
+        )
+    ) {
+
+        return element.electrons_per_shell[
+            element.electrons_per_shell.length - 1
+        ];
+
+    }
+
+    return "—";
+}
+
+
+/* =========================================
+   LOAD ALL 118 ELEMENTS
+========================================= */
+
+async function loadElementData() {
+
+    try {
+
+        const response =
+            await fetch(
+                "https://api.periodictableofelements.org/elements/"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        data.forEach(element => {
+
+            detailedElements[
+                element.symbol
+            ] = element;
+
+        });
+
+
+        console.log(
+            `Loaded ${data.length} elements`
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Could not load element data:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================
    OPEN DETAIL VIEW
 ========================================= */
 
-function openElementDetails(element) {
+function openElementDetails(
+    element
+) {
 
     const details =
-        elementDetails[element.symbol];
+        detailedElements[
+            element.symbol
+        ];
+
 
     if (!details) {
 
         console.warn(
-            `No detailed information available for ${element.name}`
+            `No detailed data found for ${element.name}`
         );
 
         return;
@@ -313,27 +442,37 @@ function openElementDetails(element) {
     ).textContent =
         element.number;
 
+
     document.getElementById(
         "detail-symbol"
     ).textContent =
         element.symbol;
+
 
     document.getElementById(
         "detail-name"
     ).textContent =
         element.name;
 
+
     document.getElementById(
         "detail-category"
     ).textContent =
-        categoryNames[element.category]
-        || element.category;
+        categoryNames[
+            element.category
+        ]
+        || categoryNames[
+            details.category
+        ]
+        || details.category
+        || "Element";
 
 
     document.getElementById(
         "detail-description"
     ).textContent =
-        details.description;
+        details.summary
+        || `${element.name} is a chemical element.`;
 
 
     /* -------------------------------------
@@ -345,60 +484,84 @@ function openElementDetails(element) {
     ).textContent =
         element.mass;
 
+
     document.getElementById(
         "detail-state"
     ).textContent =
-        details.state;
+        details.state_at_room_temp
+        ? capitalize(
+            details.state_at_room_temp
+        )
+        : element.state;
+
 
     document.getElementById(
         "detail-period"
     ).textContent =
-        element.period ?? "—";
+        element.period
+        ?? details.period
+        ?? "—";
+
 
     document.getElementById(
         "detail-group"
     ).textContent =
-        element.group ?? "—";
+        element.group
+        ?? details.group_number
+        ?? "—";
 
 
     /* -------------------------------------
-       ELECTRONIC STRUCTURE
+       ELECTRON STRUCTURE
     ------------------------------------- */
 
     document.getElementById(
         "detail-electron-configuration"
     ).textContent =
-        details.electronConfiguration;
+        formatElectronConfiguration(
+            details.electron_configuration
+            || details.electron_configuration_semantic
+        );
+
 
     document.getElementById(
         "detail-noble-configuration"
     ).textContent =
-        details.nobleConfiguration;
+        details.electron_configuration_semantic
+        || "—";
+
 
     document.getElementById(
         "detail-shells"
     ).textContent =
-        details.shells;
+        formatShells(
+            details.electrons_per_shell
+        );
 
-
-    /* -------------------------------------
-       CHEMICAL PROPERTIES
-    ------------------------------------- */
 
     document.getElementById(
         "detail-valence-electrons"
     ).textContent =
-        details.valenceElectrons;
+        getValenceElectrons(
+            details
+        );
+
 
     document.getElementById(
         "detail-common-ions"
     ).textContent =
-        details.commonIons;
+        getCommonIons(
+            element
+        );
+
 
     document.getElementById(
         "detail-electronegativity"
     ).textContent =
-        details.electronegativity;
+        formatValue(
+            details.electronegativity,
+            ""
+        );
 
 
     /* -------------------------------------
@@ -408,22 +571,36 @@ function openElementDetails(element) {
     document.getElementById(
         "detail-atomic-radius"
     ).textContent =
-        details.atomicRadius;
+        formatValue(
+            details.atomic_radius,
+            " pm"
+        );
+
 
     document.getElementById(
         "detail-ionization-energy"
     ).textContent =
-        details.ionizationEnergy;
+        formatValue(
+            details.ionization_energy,
+            " kJ/mol"
+        );
+
 
     document.getElementById(
         "detail-electron-affinity"
     ).textContent =
-        details.electronAffinity;
+        formatValue(
+            details.electron_affinity,
+            " kJ/mol"
+        );
+
 
     document.getElementById(
         "detail-density"
     ).textContent =
-        details.density;
+        formatDensity(
+            details.density
+        );
 
 
     /* -------------------------------------
@@ -433,12 +610,17 @@ function openElementDetails(element) {
     document.getElementById(
         "detail-melting-point"
     ).textContent =
-        details.meltingPoint;
+        formatTemperature(
+            details.melting_point
+        );
+
 
     document.getElementById(
         "detail-boiling-point"
     ).textContent =
-        details.boilingPoint;
+        formatTemperature(
+            details.boiling_point
+        );
 
 
     /* -------------------------------------
@@ -448,22 +630,101 @@ function openElementDetails(element) {
     document.getElementById(
         "detail-discovered-by"
     ).textContent =
-        details.discoveredBy;
+        details.discovered_by
+        || "Unknown";
+
 
     document.getElementById(
         "detail-discovery-year"
     ).textContent =
-        details.discoveryYear;
+        formatDiscoveryYear(
+            details.discovery_year
+        );
 
 
     /* -------------------------------------
        OPEN MODAL
     ------------------------------------- */
 
-    elementModal.classList.add("active");
+    elementModal.classList.add(
+        "active"
+    );
 
     document.body.style.overflow =
         "hidden";
+
+}
+
+
+/* =========================================
+   TEMPERATURE FORMATTER
+========================================= */
+
+function formatTemperature(
+    value
+) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "—";
+
+    }
+
+
+    /*
+       API temperatures are provided
+       in °C in the element endpoint.
+    */
+
+    return `${value} °C`;
+}
+
+
+/* =========================================
+   DENSITY FORMATTER
+========================================= */
+
+function formatDensity(
+    value
+) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "—";
+
+    }
+
+
+    /*
+       The API uses g/cm³ for most
+       solids/liquids and g/L for gases.
+    */
+
+    return `${value} g/cm³`;
+}
+
+
+/* =========================================
+   CAPITALIZE
+========================================= */
+
+function capitalize(
+    value
+) {
+
+    if (!value) {
+        return "—";
+    }
+
+    return value.charAt(0).toUpperCase()
+        + value.slice(1);
+
 }
 
 
@@ -473,10 +734,13 @@ function openElementDetails(element) {
 
 function closeElementDetails() {
 
-    elementModal.classList.remove("active");
+    elementModal.classList.remove(
+        "active"
+    );
 
     document.body.style.overflow =
         "";
+
 }
 
 
@@ -489,22 +753,32 @@ document.addEventListener(
     event => {
 
         const elementCard =
-            event.target.closest(".element");
+            event.target.closest(
+                ".element"
+            );
 
-        if (!elementCard) return;
+
+        if (!elementCard) {
+            return;
+        }
 
 
         const symbol =
             elementCard
-                .querySelector(".symbol")
+                .querySelector(
+                    ".symbol"
+                )
                 ?.textContent
                 ?.trim();
 
-        if (!symbol) return;
+
+        if (!symbol) {
+            return;
+        }
 
 
         /*
-           Search the main table first.
+           Search the main table.
         */
 
         let element =
@@ -515,8 +789,7 @@ document.addEventListener(
 
 
         /*
-           Search the f-block if it wasn't
-           found in the main table.
+           Search the f-block.
         */
 
         if (!element) {
@@ -529,13 +802,19 @@ document.addEventListener(
                     item =>
                         item.symbol === symbol
                 );
+
         }
 
 
-        if (!element) return;
+        if (!element) {
+            return;
+        }
 
 
-        openElementDetails(element);
+        openElementDetails(
+            element
+        );
+
     }
 );
 
@@ -569,11 +848,23 @@ document.addEventListener(
     event => {
 
         if (
-            event.key === "Escape" &&
-            elementModal.classList.contains("active")
+            event.key === "Escape"
+            &&
+            elementModal.classList.contains(
+                "active"
+            )
         ) {
 
             closeElementDetails();
+
         }
+
     }
 );
+
+
+/* =========================================
+   START DATA LOADING
+========================================= */
+
+loadElementData();
