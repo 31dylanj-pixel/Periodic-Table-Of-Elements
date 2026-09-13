@@ -99,20 +99,188 @@ const elementDetails = {
    ELEMENT DETAIL VIEW
 ========================================= */
 
+const elementModal =
+    document.getElementById("element-modal");
+
+const elementModalClose =
+    document.getElementById("element-modal-close");
+
+const elementModalBackdrop =
+    document.querySelector(".element-modal-backdrop");
+
+
+/* =========================================
+   CATEGORY NAMES
+========================================= */
+
+const categoryNames = {
+
+    "alkali-metal": "Alkali Metal",
+    "alkaline-earth-metal": "Alkaline Earth Metal",
+    "transition-metal": "Transition Metal",
+    "post-transition-metal": "Post-transition Metal",
+    "metalloid": "Metalloid",
+    "nonmetal": "Nonmetal",
+    "halogen": "Halogen",
+    "noble-gas": "Noble Gas",
+    "lanthanide": "Lanthanide",
+    "actinide": "Actinide"
+
+};
+
+
+/* =========================================
+   OPEN DETAIL VIEW
+========================================= */
+
 function openElementDetails(element) {
 
-    const details = elementDetails[element.symbol];
+    const details =
+        elementDetails[element.symbol];
 
     if (!details) {
+
         console.warn(
             `No detailed information available for ${element.name}`
         );
+
         return;
     }
 
-    console.log(
-        `Opening details for ${element.name}`
-    );
+
+    /* BASIC INFORMATION */
+
+    document.getElementById(
+        "detail-atomic-number"
+    ).textContent = element.number;
+
+    document.getElementById(
+        "detail-symbol"
+    ).textContent = element.symbol;
+
+    document.getElementById(
+        "detail-name"
+    ).textContent = element.name;
+
+    document.getElementById(
+        "detail-category"
+    ).textContent =
+        categoryNames[element.category]
+        || element.category;
+
+
+    document.getElementById(
+        "detail-description"
+    ).textContent =
+        details.description;
+
+
+    /* QUICK STATS */
+
+    document.getElementById(
+        "detail-mass"
+    ).textContent = element.mass;
+
+    document.getElementById(
+        "detail-state"
+    ).textContent = details.state;
+
+    document.getElementById(
+        "detail-period"
+    ).textContent =
+        element.period ?? "—";
+
+    document.getElementById(
+        "detail-group"
+    ).textContent =
+        element.group ?? "—";
+
+
+    /* ELECTRONIC STRUCTURE */
+
+    document.getElementById(
+        "detail-electron-configuration"
+    ).textContent =
+        details.electronConfiguration;
+
+    document.getElementById(
+        "detail-shells"
+    ).textContent =
+        details.shells;
+
+    document.getElementById(
+        "detail-electronegativity"
+    ).textContent =
+        details.electronegativity;
+
+
+    /* ATOMIC PROPERTIES */
+
+    document.getElementById(
+        "detail-atomic-radius"
+    ).textContent =
+        details.atomicRadius;
+
+    document.getElementById(
+        "detail-ionization-energy"
+    ).textContent =
+        details.ionizationEnergy;
+
+    document.getElementById(
+        "detail-electron-affinity"
+    ).textContent =
+        details.electronAffinity;
+
+    document.getElementById(
+        "detail-density"
+    ).textContent =
+        details.density;
+
+
+    /* PHYSICAL PROPERTIES */
+
+    document.getElementById(
+        "detail-melting-point"
+    ).textContent =
+        details.meltingPoint;
+
+    document.getElementById(
+        "detail-boiling-point"
+    ).textContent =
+        details.boilingPoint;
+
+
+    /* DISCOVERY */
+
+    document.getElementById(
+        "detail-discovered-by"
+    ).textContent =
+        details.discoveredBy;
+
+    document.getElementById(
+        "detail-discovery-year"
+    ).textContent =
+        details.discoveryYear;
+
+
+    /* OPEN MODAL */
+
+    elementModal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* =========================================
+   CLOSE DETAIL VIEW
+========================================= */
+
+function closeElementDetails() {
+
+    elementModal.classList.remove("active");
+
+    document.body.style.overflow = "";
 
 }
 
@@ -128,31 +296,86 @@ document.addEventListener("click", event => {
 
     if (!elementCard) return;
 
+
     const symbol =
-        elementCard.querySelector(".symbol")?.textContent;
+        elementCard
+            .querySelector(".symbol")
+            ?.textContent
+            ?.trim();
+
 
     if (!symbol) return;
 
-    const element =
+
+    /*
+       Main-table elements
+    */
+
+    let element =
         elements.find(item =>
             item.symbol === symbol
         );
 
+
+    /*
+       F-block elements
+    */
+
     if (!element) {
 
-        const fBlockElement =
+        element =
             [...lanthanides, ...actinides]
                 .find(item =>
                     item.symbol === symbol
                 );
 
-        if (fBlockElement) {
-            openElementDetails(fBlockElement);
-        }
-
-        return;
     }
+
+
+    if (!element) return;
+
 
     openElementDetails(element);
 
 });
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+elementModalClose.addEventListener(
+    "click",
+    closeElementDetails
+);
+
+
+/* =========================================
+   BACKDROP CLICK
+========================================= */
+
+elementModalBackdrop.addEventListener(
+    "click",
+    closeElementDetails
+);
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            elementModal.classList.contains("active")
+        ) {
+
+            closeElementDetails();
+
+        }
+
+    }
+);
