@@ -455,18 +455,29 @@ function openElementDetails(
         element.name;
 
 
-    document.getElementById(
-        "detail-category"
-    ).textContent =
-        categoryNames[
-            element.category
-        ]
-        || categoryNames[
-            details.category
-        ]
-        || details.category
-        || "Element";
-
+    const detailCategory =
+       document.getElementById(
+           "detail-category"
+       );
+   
+   const category =
+       element.category
+       || details.category
+       || "";
+   
+   detailCategory.textContent =
+       categoryNames[category]
+       || category
+       || "Element";
+   
+   detailCategory.className =
+       "detail-category";
+   
+   if (category) {
+       detailCategory.classList.add(
+           category
+       );
+   }
 
     document.getElementById(
        "detail-description"
