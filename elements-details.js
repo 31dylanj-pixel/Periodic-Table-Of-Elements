@@ -352,6 +352,188 @@ function getCommonIons(element) {
     return commonIons[element.symbol] || "None";
 }
 
+/* =========================================
+   GET COMMON ISOTOPES
+========================================= */
+
+const commonIsotopes = {
+
+    // =========================
+    // PERIOD 1
+    // =========================
+
+    H: "¹H, ²H, ³H",
+    He: "³He, ⁴He",
+
+
+    // =========================
+    // PERIOD 2
+    // =========================
+
+    Li: "⁶Li, ⁷Li",
+    Be: "⁹Be",
+    B: "¹⁰B, ¹¹B",
+    C: "¹²C, ¹³C, ¹⁴C",
+    N: "¹⁴N, ¹⁵N",
+    O: "¹⁶O, ¹⁷O, ¹⁸O",
+    F: "¹⁹F",
+    Ne: "²⁰Ne, ²¹Ne, ²²Ne",
+
+
+    // =========================
+    // PERIOD 3
+    // =========================
+
+    Na: "²³Na",
+    Mg: "²⁴Mg, ²⁵Mg, ²⁶Mg",
+    Al: "²⁷Al",
+    Si: "²⁸Si, ²⁹Si, ³⁰Si",
+    P: "³¹P",
+    S: "³²S, ³³S, ³⁴S, ³⁶S",
+    Cl: "³⁵Cl, ³⁷Cl",
+    Ar: "³⁶Ar, ³⁸Ar, ⁴⁰Ar",
+
+
+    // =========================
+    // PERIOD 4
+    // =========================
+
+    K: "³⁹K, ⁴⁰K, ⁴¹K",
+    Ca: "⁴⁰Ca, ⁴²Ca, ⁴³Ca, ⁴⁴Ca, ⁴⁶Ca, ⁴⁸Ca",
+
+    Sc: "⁴⁵Sc",
+    Ti: "⁴⁶Ti, ⁴⁷Ti, ⁴⁸Ti, ⁴⁹Ti, ⁵⁰Ti",
+    V: "⁵⁰V, ⁵¹V",
+    Cr: "⁵⁰Cr, ⁵²Cr, ⁵³Cr, ⁵⁴Cr",
+    Mn: "⁵⁵Mn",
+    Fe: "⁵⁴Fe, ⁵⁶Fe, ⁵⁷Fe, ⁵⁸Fe",
+    Co: "⁵⁹Co",
+    Ni: "⁵⁸Ni, ⁶⁰Ni, ⁶¹Ni, ⁶²Ni, ⁶⁴Ni",
+    Cu: "⁶³Cu, ⁶⁵Cu",
+    Zn: "⁶⁴Zn, ⁶⁶Zn, ⁶⁷Zn, ⁶⁸Zn, ⁷⁰Zn",
+
+    Ga: "⁶⁹Ga, ⁷¹Ga",
+    Ge: "⁷⁰Ge, ⁷²Ge, ⁷³Ge, ⁷⁴Ge, ⁷⁶Ge",
+    As: "⁷⁵As",
+    Se: "⁷⁴Se, ⁷⁶Se, ⁷⁷Se, ⁷⁸Se, ⁸⁰Se, ⁸²Se",
+    Br: "⁷⁹Br, ⁸¹Br",
+    Kr: "⁸⁴Kr, ⁸⁶Kr, ⁸⁷Kr, ⁸⁸Kr",
+
+
+    // =========================
+    // PERIOD 5
+    // =========================
+
+    Rb: "⁸⁵Rb, ⁸⁷Rb",
+    Sr: "⁸⁴Sr, ⁸⁶Sr, ⁸⁷Sr, ⁸⁸Sr",
+
+    Y: "⁸⁹Y",
+    Zr: "⁹⁰Zr, ⁹¹Zr, ⁹²Zr, ⁹⁴Zr, ⁹⁶Zr",
+    Nb: "⁹³Nb",
+    Mo: "⁹²Mo, ⁹⁴Mo, ⁹⁵Mo, ⁹⁶Mo, ⁹⁷Mo, ⁹⁸Mo, ¹⁰⁰Mo",
+    Tc: "⁹⁸Tc, ⁹⁹Tc",
+    Ru: "⁹⁶Ru, ⁹⁸Ru, ⁹⁹Ru, ¹⁰⁰Ru, ¹⁰¹Ru, ¹⁰²Ru, ¹⁰⁴Ru",
+    Rh: "¹⁰³Rh",
+    Pd: "¹⁰²Pd, ¹⁰⁴Pd, ¹⁰⁵Pd, ¹⁰⁶Pd, ¹⁰⁸Pd, ¹¹⁰Pd",
+    Ag: "¹⁰⁷Ag, ¹⁰⁹Ag",
+    Cd: "¹⁰⁶Cd, ¹⁰⁸Cd, ¹¹⁰Cd, ¹¹¹Cd, ¹¹²Cd, ¹¹³Cd, ¹¹⁴Cd, ¹¹⁶Cd",
+
+    In: "¹¹³In, ¹¹⁵In",
+    Sn: "¹¹²Sn, ¹¹⁴Sn, ¹¹⁵Sn, ¹¹⁶Sn, ¹¹⁷Sn, ¹¹⁸Sn, ¹¹⁹Sn, ¹²⁰Sn, ¹²²Sn, ¹²⁴Sn",
+    Sb: "¹²¹Sb, ¹²³Sb",
+    Te: "¹²⁰Te, ¹²²Te, ¹²³Te, ¹²⁴Te, ¹²⁵Te, ¹²⁶Te, ¹²⁸Te, ¹³⁰Te",
+    I: "¹²⁷I",
+    Xe: "¹²⁴Xe, ¹²⁶Xe, ¹²⁸Xe, ¹²⁹Xe, ¹³⁰Xe, ¹³¹Xe, ¹³²Xe, ¹³⁴Xe, ¹³⁶Xe",
+
+
+    // =========================
+    // PERIOD 6
+    // =========================
+
+    Cs: "¹³³Cs",
+    Ba: "¹³⁰Ba, ¹³²Ba, ¹³⁴Ba, ¹³⁵Ba, ¹³⁶Ba, ¹³⁷Ba, ¹³⁸Ba",
+
+    // Lanthanides
+    La: "¹³⁸La, ¹³⁹La",
+    Ce: "¹³⁶Ce, ¹³⁸Ce, ¹⁴⁰Ce, ¹⁴²Ce",
+    Pr: "¹⁴¹Pr",
+    Nd: "¹⁴²Nd, ¹⁴³Nd, ¹⁴⁴Nd, ¹⁴⁵Nd, ¹⁴⁶Nd, ¹⁴⁸Nd, ¹⁵⁰Nd",
+    Pm: "¹⁴⁵Pm",
+    Sm: "¹⁴⁴Sm, ¹⁴⁷Sm, ¹⁴⁸Sm, ¹⁴⁹Sm, ¹⁵⁰Sm, ¹⁵²Sm, ¹⁵⁴Sm",
+    Eu: "¹⁵¹Eu, ¹⁵³Eu",
+    Gd: "¹⁵²Gd, ¹⁵⁴Gd, ¹⁵⁵Gd, ¹⁵⁶Gd, ¹⁵⁷Gd, ¹⁵⁸Gd, ¹⁶⁰Gd",
+    Tb: "¹⁵⁹Tb",
+    Dy: "¹⁵⁶Dy, ¹⁵⁸Dy, ¹⁶⁰Dy, ¹⁶¹Dy, ¹⁶²Dy, ¹⁶³Dy, ¹⁶⁴Dy",
+    Ho: "¹⁶⁵Ho",
+    Er: "¹⁶²Er, ¹⁶⁴Er, ¹⁶⁶Er, ¹⁶⁷Er, ¹⁶⁸Er, ¹⁷⁰Er",
+    Tm: "¹⁶⁹Tm",
+    Yb: "¹⁶⁸Yb, ¹⁷⁰Yb, ¹⁷¹Yb, ¹⁷²Yb, ¹⁷³Yb, ¹⁷⁴Yb, ¹⁷⁶Yb",
+    Lu: "¹⁷⁵Lu, ¹⁷⁶Lu",
+
+    Hf: "¹⁷⁴Hf, ¹⁷⁶Hf, ¹⁷⁷Hf, ¹⁷⁸Hf, ¹⁷⁹Hf, ¹⁸⁰Hf",
+    Ta: "¹⁸⁰Ta, ¹⁸¹Ta",
+    W: "¹⁸⁰W, ¹⁸²W, ¹⁸³W, ¹⁸⁴W, ¹⁸⁶W",
+    Re: "¹⁸⁵Re, ¹⁸⁷Re",
+    Os: "¹⁸⁴Os, ¹⁸⁶Os, ¹⁸⁷Os, ¹⁸⁸Os, ¹⁸⁹Os, ¹⁹⁰Os, ¹⁹²Os",
+    Ir: "¹⁹¹Ir, ¹⁹³Ir",
+    Pt: "¹⁹⁰Pt, ¹⁹²Pt, ¹⁹⁴Pt, ¹⁹⁵Pt, ¹⁹⁶Pt, ¹⁹⁸Pt",
+    Au: "¹⁹⁷Au",
+    Hg: "¹⁹⁶Hg, ¹⁹⁸Hg, ¹⁹⁹Hg, ²⁰⁰Hg, ²⁰¹Hg, ²⁰²Hg, ²⁰⁴Hg",
+
+    Tl: "²⁰³Tl, ²⁰⁵Tl",
+    Pb: "²⁰⁴Pb, ²⁰⁶Pb, ²⁰⁷Pb, ²⁰⁸Pb",
+    Bi: "²⁰⁹Bi",
+    Po: "²⁰⁹Po, ²¹⁰Po",
+    At: "²¹⁰At",
+    Rn: "²²²Rn",
+
+
+    // =========================
+    // PERIOD 7
+    // =========================
+
+    Fr: "²²³Fr",
+    Ra: "²²⁶Ra",
+
+    // Actinides
+    Ac: "²²⁷Ac",
+    Th: "²³²Th",
+    Pa: "²³¹Pa",
+    U: "²³⁴U, ²³⁵U, ²³⁸U",
+    Np: "²³⁷Np",
+    Pu: "²³⁹Pu, ²⁴⁰Pu",
+    Am: "²⁴¹Am, ²⁴³Am",
+    Cm: "²⁴²Cm, ²⁴⁴Cm",
+    Bk: "²⁴⁷Bk",
+    Cf: "²⁵¹Cf, ²⁵²Cf",
+    Es: "²⁵²Es",
+    Fm: "²⁵⁷Fm",
+    Md: "²⁵⁸Md",
+    No: "²⁵⁹No",
+    Lr: "²⁶²Lr",
+
+    // Superheavy elements
+    Rf: "²⁶⁷Rf",
+    Db: "²⁶⁸Db",
+    Sg: "²⁶⁹Sg",
+    Bh: "²⁷⁰Bh",
+    Hs: "²⁷⁷Hs",
+    Mt: "²⁷⁸Mt",
+    Ds: "²⁸¹Ds",
+    Rg: "²⁸²Rg",
+    Cn: "²⁸⁵Cn",
+    Nh: "²⁸⁶Nh",
+    Fl: "²⁸⁹Fl",
+    Mc: "²⁹⁰Mc",
+    Lv: "²⁹³Lv",
+    Ts: "²⁹⁴Ts",
+    Og: "²⁹⁴Og"
+};
+
+
+function getCommonIsotopes(element) {
+    return commonIsotopes[element.symbol] || "None";
+}
 
 /* =========================================
    GET VALENCE ELECTRONS
