@@ -172,144 +172,184 @@ function formatDiscoveryYear(
    GET COMMON IONS
 ========================================= */
 
-function getCommonIons(
-    element
-) {
-
-    /*
-       Some elements have particularly
-       recognizable common ions.
-
-       For transition metals and other
-       variable-valence elements, the API's
-       oxidation states are used as a
-       reasonable representation.
-    */
-
+function getCommonIons(element) {
     const commonIons = {
 
-        H: "H⁺",
+        // =========================
+        // PERIOD 1
+        // =========================
 
-        Li: "Li⁺",
-        Be: "Be²⁺",
+        H: "+1, −1",
+        He: "None",
 
-        Na: "Na⁺",
-        Mg: "Mg²⁺",
 
-        Al: "Al³⁺",
+        // =========================
+        // PERIOD 2
+        // =========================
 
-        K: "K⁺",
-        Ca: "Ca²⁺",
+        Li: "+1",
+        Be: "+2",
+        B: "None",
+        C: "−4",
+        N: "−3",
+        O: "−2",
+        F: "−1",
+        Ne: "None",
 
-        Sc: "Sc³⁺",
-        Ti: "Ti²⁺, Ti³⁺, Ti⁴⁺",
-        V: "V²⁺, V³⁺, V⁴⁺, V⁵⁺",
-        Cr: "Cr²⁺, Cr³⁺",
-        Mn: "Mn²⁺, Mn⁴⁺, Mn⁷⁺",
-        Fe: "Fe²⁺, Fe³⁺",
-        Co: "Co²⁺, Co³⁺",
-        Ni: "Ni²⁺, Ni³⁺",
-        Cu: "Cu⁺, Cu²⁺",
-        Zn: "Zn²⁺",
 
-        Ga: "Ga³⁺",
-        Ge: "Ge²⁺, Ge⁴⁺",
-        As: "As³⁻, As³⁺, As⁵⁺",
-        Se: "Se²⁻, Se⁴⁺, Se⁶⁺",
+        // =========================
+        // PERIOD 3
+        // =========================
 
-        Rb: "Rb⁺",
-        Sr: "Sr²⁺",
-        Y: "Y³⁺",
-        Zr: "Zr⁴⁺",
-        Nb: "Nb³⁺, Nb⁵⁺",
-        Mo: "Mo³⁺, Mo⁶⁺",
-        Tc: "Tc⁴⁺, Tc⁷⁺",
-        Ru: "Ru³⁺, Ru⁴⁺",
-        Rh: "Rh³⁺",
-        Pd: "Pd²⁺, Pd⁴⁺",
-        Ag: "Ag⁺",
-        Cd: "Cd²⁺",
+        Na: "+1",
+        Mg: "+2",
+        Al: "+3",
+        Si: "None",
+        P: "−3",
+        S: "−2",
+        Cl: "−1",
+        Ar: "None",
 
-        In: "In⁺, In³⁺",
-        Sn: "Sn²⁺, Sn⁴⁺",
-        Sb: "Sb³⁺, Sb⁵⁺",
-        Te: "Te²⁻, Te⁴⁺, Te⁶⁺",
 
-        Cs: "Cs⁺",
-        Ba: "Ba²⁺",
+        // =========================
+        // PERIOD 4
+        // =========================
 
-        La: "La³⁺",
-        Ce: "Ce³⁺, Ce⁴⁺",
-        Pr: "Pr³⁺, Pr⁴⁺",
-        Nd: "Nd³⁺",
-        Pm: "Pm³⁺",
-        Sm: "Sm²⁺, Sm³⁺",
-        Eu: "Eu²⁺, Eu³⁺",
-        Gd: "Gd³⁺",
-        Tb: "Tb³⁺, Tb⁴⁺",
-        Dy: "Dy³⁺",
-        Ho: "Ho³⁺",
-        Er: "Er³⁺",
-        Tm: "Tm²⁺, Tm³⁺",
-        Yb: "Yb²⁺, Yb³⁺",
-        Lu: "Lu³⁺",
+        K: "+1",
+        Ca: "+2",
 
-        Hf: "Hf⁴⁺",
-        Ta: "Ta⁵⁺",
-        W: "W⁴⁺, W⁶⁺",
-        Re: "Re⁴⁺, Re⁶⁺, Re⁷⁺",
-        Os: "Os⁴⁺, Os⁸⁺",
-        Ir: "Ir³⁺, Ir⁴⁺",
-        Pt: "Pt²⁺, Pt⁴⁺",
-        Au: "Au⁺, Au³⁺",
-        Hg: "Hg₂²⁺, Hg²⁺",
+        Sc: "+3",
+        Ti: "+2, +3, +4",
+        V: "+2, +3, +4, +5",
+        Cr: "+2, +3",
+        Mn: "+2, +3, +4",
+        Fe: "+2, +3",
+        Co: "+2, +3",
+        Ni: "+2, +3",
+        Cu: "+1, +2",
+        Zn: "+2",
 
-        Tl: "Tl⁺, Tl³⁺",
-        Pb: "Pb²⁺, Pb⁴⁺",
-        Bi: "Bi³⁺, Bi⁵⁺",
+        Ga: "+3",
+        Ge: "None",
+        As: "−3",
+        Se: "−2",
+        Br: "−1",
+        Kr: "None",
 
-        Po: "Po²⁺, Po⁴⁺",
-        At: "At⁻",
 
-        Fr: "Fr⁺",
-        Ra: "Ra²⁺",
+        // =========================
+        // PERIOD 5
+        // =========================
 
-        Ac: "Ac³⁺",
-        Th: "Th⁴⁺",
-        Pa: "Pa⁴⁺, Pa⁵⁺",
-        U: "U³⁺, U⁴⁺, U⁵⁺, U⁶⁺",
-        Np: "Np³⁺, Np⁴⁺, Np⁵⁺, Np⁶⁺",
-        Pu: "Pu³⁺, Pu⁴⁺, Pu⁵⁺, Pu⁶⁺",
-        Am: "Am³⁺",
-        Cm: "Cm³⁺",
-        Bk: "Bk³⁺, Bk⁴⁺",
-        Cf: "Cf³⁺",
-        Es: "Es³⁺",
-        Fm: "Fm³⁺",
-        Md: "Md²⁺, Md³⁺",
-        No: "No²⁺, No³⁺",
-        Lr: "Lr³⁺",
+        Rb: "+1",
+        Sr: "+2",
 
-        Rf: "Rf⁴⁺",
-        Db: "Db⁵⁺",
-        Sg: "Sg⁶⁺",
-        Bh: "Bh⁷⁺",
-        Hs: "Hs⁸⁺",
-        Mt: "Mt³⁺",
-        Ds: "Ds²⁺, Ds⁴⁺",
-        Rg: "Rg⁺, Rg³⁺",
-        Cn: "Cn²⁺",
-        Nh: "Nh⁺, Nh³⁺",
-        Fl: "Fl²⁺, Fl⁴⁺",
-        Mc: "Mc⁺, Mc³⁺",
-        Lv: "Lv²⁺, Lv⁴⁺",
-        Ts: "Ts⁻",
+        Y: "+3",
+        Zr: "+4",
+        Nb: "+3, +5",
+        Mo: "+3, +6",
+        Tc: "+4, +7",
+        Ru: "+2, +3",
+        Rh: "+3",
+        Pd: "+2, +4",
+        Ag: "+1",
+        Cd: "+2",
+
+        In: "+1, +3",
+        Sn: "+2, +4",
+        Sb: "−3",
+        Te: "−2",
+        I: "−1",
+        Xe: "None",
+
+
+        // =========================
+        // PERIOD 6
+        // =========================
+
+        Cs: "+1",
+        Ba: "+2",
+
+        // Lanthanides
+        La: "+3",
+        Ce: "+3, +4",
+        Pr: "+3",
+        Nd: "+3",
+        Pm: "+3",
+        Sm: "+2, +3",
+        Eu: "+2, +3",
+        Gd: "+3",
+        Tb: "+3, +4",
+        Dy: "+3",
+        Ho: "+3",
+        Er: "+3",
+        Tm: "+3",
+        Yb: "+2, +3",
+        Lu: "+3",
+
+        // Transition metals
+        Hf: "+4",
+        Ta: "+5",
+        W: "+4, +6",
+        Re: "+4, +6, +7",
+        Os: "+2, +3, +4",
+        Ir: "+3, +4",
+        Pt: "+2, +4",
+        Au: "+1, +3",
+        Hg: "+1, +2",
+
+        // Post-transition / p-block
+        Tl: "+1, +3",
+        Pb: "+2, +4",
+        Bi: "+3, +5",
+        Po: "+2, +4",
+        At: "−1",
+        Rn: "None",
+
+
+        // =========================
+        // PERIOD 7
+        // =========================
+
+        Fr: "+1",
+        Ra: "+2",
+
+        // Actinides
+        Ac: "+3",
+        Th: "+4",
+        Pa: "+4, +5",
+        U: "+3, +4, +5, +6",
+        Np: "+3, +4, +5, +6",
+        Pu: "+3, +4, +5, +6",
+        Am: "+3, +4, +5, +6",
+        Cm: "+3, +4",
+        Bk: "+3, +4",
+        Cf: "+3",
+        Es: "+3",
+        Fm: "+3",
+        Md: "+2, +3",
+        No: "+2, +3",
+        Lr: "+3",
+
+        // Superheavy elements
+        Rf: "+4",
+        Db: "+5",
+        Sg: "+6",
+        Bh: "+7",
+        Hs: "+8",
+        Mt: "None",
+        Ds: "None",
+        Rg: "None",
+        Cn: "+2",
+        Nh: "+1, +3",
+        Fl: "+2, +4",
+        Mc: "None",
+        Lv: "+2",
+        Ts: "−1",
         Og: "None"
-
     };
 
-    return commonIons[element.symbol]
-        || "None";
+    return commonIons[element.symbol] || "None";
 }
 
 
