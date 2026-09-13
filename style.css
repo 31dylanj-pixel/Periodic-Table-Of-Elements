@@ -1261,10 +1261,6 @@ body {
     .detail-info-wide {
         grid-column: span 1;
     }
-
-    .detail-discovery {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* =========================================
