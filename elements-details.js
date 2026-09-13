@@ -798,13 +798,18 @@ function openElementDetails(
             " kJ/mol"
         );
 
-
-    document.getElementById(
-        "detail-density"
-    ).textContent =
-        formatDensity(
-            details.density
-        );
+   document.getElementById(
+       "detail-isotopes"
+   ).textContent =
+       getCommonIsotopes(
+           element
+       );
+   document.getElementById(
+      "detail-density"
+   ).textContent =
+      formatDensity(
+         details.density
+      );
 
 
     /* -------------------------------------
