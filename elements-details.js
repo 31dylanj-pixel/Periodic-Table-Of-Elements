@@ -84,24 +84,6 @@ const elementModalBackdrop =
         ".element-modal-backdrop"
     );
 
-
-/* =========================================
-   FORMAT ELECTRON CONFIGURATION
-========================================= */
-
-function formatElectronConfiguration(
-    configuration
-) {
-
-    if (!configuration) {
-        return "—";
-    }
-
-    return configuration
-        .replace(/(\d)([spdf])(\d+)/g, "$1$2$3");
-}
-
-
 /* =========================================
    FORMAT SHELLS
 ========================================= */
@@ -523,14 +505,6 @@ function openElementDetails(
     /* -------------------------------------
       ELECTRON STRUCTURE
    ------------------------------------- */
-   
-   document.getElementById(
-       "detail-electron-configuration"
-   ).textContent =
-       formatElectronConfiguration(
-           details.electron_configuration
-       );
-   
    
    document.getElementById(
        "detail-noble-configuration"
