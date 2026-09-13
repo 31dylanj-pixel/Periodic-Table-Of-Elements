@@ -1,102 +1,276 @@
 /* =========================================
-   ELEMENT DETAILS
+   ELEMENT DETAILS DATA
 ========================================= */
 
 const elementDetails = {
 
+    /* =====================================
+       HYDROGEN
+    ===================================== */
+
     H: {
+
         description:
             "Hydrogen is the lightest element and the most abundant element in the universe.",
 
-        electronConfiguration: "1s¹",
-        shells: "1",
+        electronConfiguration:
+            "1s¹",
 
-        electronegativity: "2.20",
-        ionizationEnergy: "1312 kJ/mol",
-        electronAffinity: "72.8 kJ/mol",
+        nobleConfiguration:
+            "1s¹",
 
-        atomicRadius: "53 pm",
-        density: "0.0899 g/L",
+        shells:
+            "1",
 
-        meltingPoint: "−259.16 °C",
-        boilingPoint: "−252.87 °C",
+        valenceElectrons:
+            "1",
 
-        state: "Gas",
-        discoveredBy: "Henry Cavendish",
-        discoveryYear: "1766"
+        commonIons:
+            "H⁺",
+
+        electronegativity:
+            "2.20",
+
+        ionizationEnergy:
+            "1312 kJ/mol",
+
+        electronAffinity:
+            "72.8 kJ/mol",
+
+        atomicRadius:
+            "53 pm",
+
+        density:
+            "0.0899 g/L",
+
+        meltingPoint:
+            "−259.16 °C",
+
+        boilingPoint:
+            "−252.87 °C",
+
+        state:
+            "Gas",
+
+        discoveredBy:
+            "Henry Cavendish",
+
+        discoveryYear:
+            "1766"
     },
 
+
+    /* =====================================
+       HELIUM
+    ===================================== */
+
     He: {
+
         description:
             "Helium is a colorless, odorless noble gas and the second-lightest element.",
 
-        electronConfiguration: "1s²",
-        shells: "2",
+        electronConfiguration:
+            "1s²",
 
-        electronegativity: "—",
-        ionizationEnergy: "2372 kJ/mol",
-        electronAffinity: "—",
+        nobleConfiguration:
+            "1s²",
 
-        atomicRadius: "31 pm",
-        density: "0.1785 g/L",
+        shells:
+            "2",
 
-        meltingPoint: "−272.20 °C",
-        boilingPoint: "−268.93 °C",
+        valenceElectrons:
+            "2",
 
-        state: "Gas",
-        discoveredBy: "Pierre Janssen / Norman Lockyer",
-        discoveryYear: "1868"
+        commonIons:
+            "None",
+
+        electronegativity:
+            "—",
+
+        ionizationEnergy:
+            "2372 kJ/mol",
+
+        electronAffinity:
+            "—",
+
+        atomicRadius:
+            "31 pm",
+
+        density:
+            "0.1785 g/L",
+
+        meltingPoint:
+            "−272.20 °C",
+
+        boilingPoint:
+            "−268.93 °C",
+
+        state:
+            "Gas",
+
+        discoveredBy:
+            "Pierre Janssen / Norman Lockyer",
+
+        discoveryYear:
+            "1868"
     },
 
+
+    /* =====================================
+       CARBON
+    ===================================== */
+
     C: {
+
         description:
             "Carbon is a versatile nonmetal that forms the basis of many compounds and is essential to life.",
 
-        electronConfiguration: "1s² 2s² 2p²",
-        shells: "2, 4",
+        electronConfiguration:
+            "1s² 2s² 2p²",
 
-        electronegativity: "2.55",
-        ionizationEnergy: "1086.5 kJ/mol",
-        electronAffinity: "121.8 kJ/mol",
+        nobleConfiguration:
+            "[He] 2s² 2p²",
 
-        atomicRadius: "70 pm",
-        density: "2.267 g/cm³",
+        shells:
+            "2, 4",
 
-        meltingPoint: "3550 °C",
-        boilingPoint: "4027 °C",
+        valenceElectrons:
+            "4",
 
-        state: "Solid",
-        discoveredBy: "Known since antiquity",
-        discoveryYear: "Ancient"
+        commonIons:
+            "C⁴⁺ / C⁴⁻",
+
+        electronegativity:
+            "2.55",
+
+        ionizationEnergy:
+            "1086.5 kJ/mol",
+
+        electronAffinity:
+            "121.8 kJ/mol",
+
+        atomicRadius:
+            "70 pm",
+
+        density:
+            "2.267 g/cm³",
+
+        meltingPoint:
+            "3550 °C",
+
+        boilingPoint:
+            "4027 °C",
+
+        state:
+            "Solid",
+
+        discoveredBy:
+            "Known since antiquity",
+
+        discoveryYear:
+            "Ancient"
     },
 
+
+    /* =====================================
+       CHLORINE
+    ===================================== */
+
     Cl: {
+
         description:
             "Chlorine is a reactive halogen commonly found in compounds such as sodium chloride.",
 
-        electronConfiguration: "1s² 2s² 2p⁶ 3s² 3p⁵",
-        shells: "2, 8, 7",
+        electronConfiguration:
+            "1s² 2s² 2p⁶ 3s² 3p⁵",
 
-        electronegativity: "3.16",
-        ionizationEnergy: "1251.2 kJ/mol",
-        electronAffinity: "349 kJ/mol",
+        nobleConfiguration:
+            "[Ne] 3s² 3p⁵",
 
-        atomicRadius: "99 pm",
-        density: "3.214 g/L",
+        shells:
+            "2, 8, 7",
 
-        meltingPoint: "−101.5 °C",
-        boilingPoint: "−34.04 °C",
+        valenceElectrons:
+            "7",
 
-        state: "Gas",
-        discoveredBy: "Carl Wilhelm Scheele",
-        discoveryYear: "1774"
+        commonIons:
+            "Cl⁻",
+
+        electronegativity:
+            "3.16",
+
+        ionizationEnergy:
+            "1251.2 kJ/mol",
+
+        electronAffinity:
+            "349 kJ/mol",
+
+        atomicRadius:
+            "99 pm",
+
+        density:
+            "3.214 g/L",
+
+        meltingPoint:
+            "−101.5 °C",
+
+        boilingPoint:
+            "−34.04 °C",
+
+        state:
+            "Gas",
+
+        discoveredBy:
+            "Carl Wilhelm Scheele",
+
+        discoveryYear:
+            "1774"
     }
 
 };
 
 
 /* =========================================
-   ELEMENT DETAIL VIEW
+   CATEGORY NAMES
+========================================= */
+
+const categoryNames = {
+
+    "alkali-metal":
+        "Alkali Metal",
+
+    "alkaline-earth-metal":
+        "Alkaline Earth Metal",
+
+    "transition-metal":
+        "Transition Metal",
+
+    "post-transition-metal":
+        "Post-transition Metal",
+
+    "metalloid":
+        "Metalloid",
+
+    "nonmetal":
+        "Nonmetal",
+
+    "halogen":
+        "Halogen",
+
+    "noble-gas":
+        "Noble Gas",
+
+    "lanthanide":
+        "Lanthanide",
+
+    "actinide":
+        "Actinide"
+
+};
+
+
+/* =========================================
+   MODAL ELEMENTS
 ========================================= */
 
 const elementModal =
@@ -106,27 +280,9 @@ const elementModalClose =
     document.getElementById("element-modal-close");
 
 const elementModalBackdrop =
-    document.querySelector(".element-modal-backdrop");
-
-
-/* =========================================
-   CATEGORY NAMES
-========================================= */
-
-const categoryNames = {
-
-    "alkali-metal": "Alkali Metal",
-    "alkaline-earth-metal": "Alkaline Earth Metal",
-    "transition-metal": "Transition Metal",
-    "post-transition-metal": "Post-transition Metal",
-    "metalloid": "Metalloid",
-    "nonmetal": "Nonmetal",
-    "halogen": "Halogen",
-    "noble-gas": "Noble Gas",
-    "lanthanide": "Lanthanide",
-    "actinide": "Actinide"
-
-};
+    document.querySelector(
+        ".element-modal-backdrop"
+    );
 
 
 /* =========================================
@@ -148,19 +304,24 @@ function openElementDetails(element) {
     }
 
 
-    /* BASIC INFORMATION */
+    /* -------------------------------------
+       BASIC INFORMATION
+    ------------------------------------- */
 
     document.getElementById(
         "detail-atomic-number"
-    ).textContent = element.number;
+    ).textContent =
+        element.number;
 
     document.getElementById(
         "detail-symbol"
-    ).textContent = element.symbol;
+    ).textContent =
+        element.symbol;
 
     document.getElementById(
         "detail-name"
-    ).textContent = element.name;
+    ).textContent =
+        element.name;
 
     document.getElementById(
         "detail-category"
@@ -175,15 +336,19 @@ function openElementDetails(element) {
         details.description;
 
 
-    /* QUICK STATS */
+    /* -------------------------------------
+       QUICK STATS
+    ------------------------------------- */
 
     document.getElementById(
         "detail-mass"
-    ).textContent = element.mass;
+    ).textContent =
+        element.mass;
 
     document.getElementById(
         "detail-state"
-    ).textContent = details.state;
+    ).textContent =
+        details.state;
 
     document.getElementById(
         "detail-period"
@@ -196,7 +361,9 @@ function openElementDetails(element) {
         element.group ?? "—";
 
 
-    /* ELECTRONIC STRUCTURE */
+    /* -------------------------------------
+       ELECTRONIC STRUCTURE
+    ------------------------------------- */
 
     document.getElementById(
         "detail-electron-configuration"
@@ -204,9 +371,29 @@ function openElementDetails(element) {
         details.electronConfiguration;
 
     document.getElementById(
+        "detail-noble-configuration"
+    ).textContent =
+        details.nobleConfiguration;
+
+    document.getElementById(
         "detail-shells"
     ).textContent =
         details.shells;
+
+
+    /* -------------------------------------
+       CHEMICAL PROPERTIES
+    ------------------------------------- */
+
+    document.getElementById(
+        "detail-valence-electrons"
+    ).textContent =
+        details.valenceElectrons;
+
+    document.getElementById(
+        "detail-common-ions"
+    ).textContent =
+        details.commonIons;
 
     document.getElementById(
         "detail-electronegativity"
@@ -214,7 +401,9 @@ function openElementDetails(element) {
         details.electronegativity;
 
 
-    /* ATOMIC PROPERTIES */
+    /* -------------------------------------
+       ATOMIC PROPERTIES
+    ------------------------------------- */
 
     document.getElementById(
         "detail-atomic-radius"
@@ -237,7 +426,9 @@ function openElementDetails(element) {
         details.density;
 
 
-    /* PHYSICAL PROPERTIES */
+    /* -------------------------------------
+       PHYSICAL PROPERTIES
+    ------------------------------------- */
 
     document.getElementById(
         "detail-melting-point"
@@ -250,7 +441,9 @@ function openElementDetails(element) {
         details.boilingPoint;
 
 
-    /* DISCOVERY */
+    /* -------------------------------------
+       DISCOVERY
+    ------------------------------------- */
 
     document.getElementById(
         "detail-discovered-by"
@@ -263,12 +456,14 @@ function openElementDetails(element) {
         details.discoveryYear;
 
 
-    /* OPEN MODAL */
+    /* -------------------------------------
+       OPEN MODAL
+    ------------------------------------- */
 
     elementModal.classList.add("active");
 
-    document.body.style.overflow = "hidden";
-
+    document.body.style.overflow =
+        "hidden";
 }
 
 
@@ -280,8 +475,8 @@ function closeElementDetails() {
 
     elementModal.classList.remove("active");
 
-    document.body.style.overflow = "";
-
+    document.body.style.overflow =
+        "";
 }
 
 
@@ -289,55 +484,60 @@ function closeElementDetails() {
    ELEMENT CLICK HANDLER
 ========================================= */
 
-document.addEventListener("click", event => {
+document.addEventListener(
+    "click",
+    event => {
 
-    const elementCard =
-        event.target.closest(".element");
+        const elementCard =
+            event.target.closest(".element");
 
-    if (!elementCard) return;
-
-
-    const symbol =
-        elementCard
-            .querySelector(".symbol")
-            ?.textContent
-            ?.trim();
+        if (!elementCard) return;
 
 
-    if (!symbol) return;
+        const symbol =
+            elementCard
+                .querySelector(".symbol")
+                ?.textContent
+                ?.trim();
+
+        if (!symbol) return;
 
 
-    /*
-       Main-table elements
-    */
+        /*
+           Search the main table first.
+        */
 
-    let element =
-        elements.find(item =>
-            item.symbol === symbol
-        );
-
-
-    /*
-       F-block elements
-    */
-
-    if (!element) {
-
-        element =
-            [...lanthanides, ...actinides]
-                .find(item =>
+        let element =
+            elements.find(
+                item =>
                     item.symbol === symbol
+            );
+
+
+        /*
+           Search the f-block if it wasn't
+           found in the main table.
+        */
+
+        if (!element) {
+
+            element =
+                [
+                    ...lanthanides,
+                    ...actinides
+                ].find(
+                    item =>
+                        item.symbol === symbol
                 );
+        }
 
+
+        if (!element) return;
+
+
+        openElementDetails(element);
     }
-
-
-    if (!element) return;
-
-
-    openElementDetails(element);
-
-});
+);
 
 
 /* =========================================
@@ -374,8 +574,6 @@ document.addEventListener(
         ) {
 
             closeElementDetails();
-
         }
-
     }
 );
