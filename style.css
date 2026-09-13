@@ -202,6 +202,146 @@ body {
     letter-spacing: 0.15em;
 }
 
+/* =========================================
+   F-BLOCK PLACEHOLDERS
+========================================= */
+
+.series-placeholder {
+
+    position: relative;
+
+    width: var(--element-width);
+    height: var(--element-height);
+
+    padding: 8px;
+
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+
+    border-radius: var(--radius);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    cursor: default;
+
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.series-placeholder:hover {
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    border-color:
+        rgba(255, 255, 255, 0.28);
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PLACEHOLDER NUMBER
+========================================= */
+
+.placeholder-number {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   PLACEHOLDER SYMBOL RANGE
+========================================= */
+
+.placeholder-symbol {
+
+    margin-top: 7px;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   PLACEHOLDER NAME
+========================================= */
+
+.placeholder-name {
+
+    margin-top: 7px;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================
+   LANTHANIDE PLACEHOLDER
+========================================= */
+
+.series-placeholder.lanthanide {
+
+    border-top:
+        2px solid #ec4899;
+}
+
+
+.series-placeholder.lanthanide
+.placeholder-name {
+
+    color: #ec4899;
+}
+
+
+/* =========================================
+   ACTINIDE PLACEHOLDER
+========================================= */
+
+.series-placeholder.actinide {
+
+    border-top:
+        2px solid #d946ef;
+}
+
+
+.series-placeholder.actinide
+.placeholder-name {
+
+    color: #d946ef;
+}
 
 /* =========================================
    TABLE SECTION
@@ -521,8 +661,7 @@ body {
     display: grid;
 
     grid-template-columns:
-        72px
-        repeat(14, 72px);
+        repeat(15, var(--element-width));
 
     gap: var(--gap);
 
