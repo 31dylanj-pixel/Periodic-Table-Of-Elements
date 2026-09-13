@@ -982,43 +982,43 @@ body {
 /* Match element category colors */
 
 .detail-category.alkali-metal {
-    color: #ff6b6b;
+    color: #ef4444;
 }
 
 .detail-category.alkaline-earth-metal {
-    color: #ffad5c;
+    color: #f97316;
 }
 
 .detail-category.transition-metal {
-    color: #ffc857;
+    color: #f59e0b;
 }
 
 .detail-category.post-transition-metal {
-    color: #aeb8c7;
+    color: #94a3b8;
 }
 
 .detail-category.metalloid {
-    color: #67d68b;
+    color: #22c55e;
 }
 
 .detail-category.nonmetal {
-    color: #5ed9ff;
+    color: #06b6d4;
 }
 
 .detail-category.halogen {
-    color: #b78cff;
+    color: #a855f7;
 }
 
 .detail-category.noble-gas {
-    color: #72a7ff;
+    color: #3b82f6;
 }
 
 .detail-category.lanthanide {
-    color: #ff7eb6;
+    color: #ec4899;
 }
 
 .detail-category.actinide {
-    color: #d96cff;
+    color: #d946ef;
 }
 
 .detail-title h2 {
