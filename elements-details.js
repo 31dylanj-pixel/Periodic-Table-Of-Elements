@@ -678,9 +678,17 @@ function openElementDetails(
        "detail-category";
    
    if (category) {
-       detailCategory.classList.add(
-           category
-       );
+      const categoryClass =
+          category.replace(/_/g, "-");
+      
+      detailCategory.className =
+          "detail-category";
+      
+      if (categoryClass) {
+          detailCategory.classList.add(
+              categoryClass
+          );
+      }
    }
 
     document.getElementById(
