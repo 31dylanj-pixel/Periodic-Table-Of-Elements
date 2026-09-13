@@ -512,23 +512,22 @@ function openElementDetails(
 
 
     /* -------------------------------------
-       ELECTRON STRUCTURE
-    ------------------------------------- */
-
-    document.getElementById(
-        "detail-electron-configuration"
-    ).textContent =
-        formatElectronConfiguration(
-            details.electron_configuration
-            || details.electron_configuration_semantic
-        );
-
-
-    document.getElementById(
-        "detail-noble-configuration"
-    ).textContent =
-        details.electron_configuration_semantic
-        || "—";
+      ELECTRON STRUCTURE
+   ------------------------------------- */
+   
+   document.getElementById(
+       "detail-electron-configuration"
+   ).textContent =
+       formatElectronConfiguration(
+           details.electron_configuration
+       );
+   
+   
+   document.getElementById(
+       "detail-noble-configuration"
+   ).textContent =
+       details.electron_configuration_semantic
+       || "—";
 
 
     document.getElementById(
