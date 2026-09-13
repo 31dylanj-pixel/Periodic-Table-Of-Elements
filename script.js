@@ -4,6 +4,10 @@
 
 const elements = [
 
+    /* =========================
+       PERIOD 1
+    ========================= */
+
     {
         number: 1,
         symbol: "H",
@@ -24,6 +28,10 @@ const elements = [
         group: 18
     },
 
+
+    /* =========================
+       PERIOD 2
+    ========================= */
 
     {
         number: 3,
@@ -106,6 +114,10 @@ const elements = [
     },
 
 
+    /* =========================
+       PERIOD 3
+    ========================= */
+
     {
         number: 11,
         symbol: "Na",
@@ -186,6 +198,10 @@ const elements = [
         group: 18
     },
 
+
+    /* =========================
+       PERIOD 4
+    ========================= */
 
     {
         number: 19,
@@ -368,6 +384,10 @@ const elements = [
     },
 
 
+    /* =========================
+       PERIOD 5
+    ========================= */
+
     {
         number: 37,
         symbol: "Rb",
@@ -549,6 +569,10 @@ const elements = [
     },
 
 
+    /* =========================
+       PERIOD 6
+    ========================= */
+
     {
         number: 55,
         symbol: "Cs",
@@ -719,6 +743,10 @@ const elements = [
         group: 18
     },
 
+
+    /* =========================
+       PERIOD 7
+    ========================= */
 
     {
         number: 87,
@@ -891,372 +919,6 @@ const elements = [
     }
 
 ];
-
-
-/* =========================================
-   F-BLOCK DATA
-========================================= */
-
-const lanthanides = [
-
-    {
-        number: 58,
-        symbol: "Ce",
-        name: "Cerium",
-        mass: "140.12",
-        category: "lanthanide"
-    },
-
-    {
-        number: 59,
-        symbol: "Pr",
-        name: "Praseodymium",
-        mass: "140.91",
-        category: "lanthanide"
-    },
-
-    {
-        number: 60,
-        symbol: "Nd",
-        name: "Neodymium",
-        mass: "144.24",
-        category: "lanthanide"
-    },
-
-    {
-        number: 61,
-        symbol: "Pm",
-        name: "Promethium",
-        mass: "(145)",
-        category: "lanthanide"
-    },
-
-    {
-        number: 62,
-        symbol: "Sm",
-        name: "Samarium",
-        mass: "150.36",
-        category: "lanthanide"
-    },
-
-    {
-        number: 63,
-        symbol: "Eu",
-        name: "Europium",
-        mass: "151.96",
-        category: "lanthanide"
-    },
-
-    {
-        number: 64,
-        symbol: "Gd",
-        name: "Gadolinium",
-        mass: "157.25",
-        category: "lanthanide"
-    },
-
-    {
-        number: 65,
-        symbol: "Tb",
-        name: "Terbium",
-        mass: "158.93",
-        category: "lanthanide"
-    },
-
-    {
-        number: 66,
-        symbol: "Dy",
-        name: "Dysprosium",
-        mass: "162.50",
-        category: "lanthanide"
-    },
-
-    {
-        number: 67,
-        symbol: "Ho",
-        name: "Holmium",
-        mass: "164.93",
-        category: "lanthanide"
-    },
-
-    {
-        number: 68,
-        symbol: "Er",
-        name: "Erbium",
-        mass: "167.26",
-        category: "lanthanide"
-    },
-
-    {
-        number: 69,
-        symbol: "Tm",
-        name: "Thulium",
-        mass: "168.93",
-        category: "lanthanide"
-    },
-
-    {
-        number: 70,
-        symbol: "Yb",
-        name: "Ytterbium",
-        mass: "173.05",
-        category: "lanthanide"
-    },
-
-    {
-        number: 71,
-        symbol: "Lu",
-        name: "Lutetium",
-        mass: "174.97",
-        category: "lanthanide"
-    }
-
-];
-
-
-const actinides = [
-
-    {
-        number: 90,
-        symbol: "Th",
-        name: "Thorium",
-        mass: "232.04",
-        category: "actinide"
-    },
-
-    {
-        number: 91,
-        symbol: "Pa",
-        name: "Protactinium",
-        mass: "231.04",
-        category: "actinide"
-    },
-
-    {
-        number: 92,
-        symbol: "U",
-        name: "Uranium",
-        mass: "238.03",
-        category: "actinide"
-    },
-
-    {
-        number: 93,
-        symbol: "Np",
-        name: "Neptunium",
-        mass: "(237)",
-        category: "actinide"
-    },
-
-    {
-        number: 94,
-        symbol: "Pu",
-        name: "Plutonium",
-        mass: "(244)",
-        category: "actinide"
-    },
-
-    {
-        number: 95,
-        symbol: "Am",
-        name: "Americium",
-        mass: "(243)",
-        category: "actinide"
-    },
-
-    {
-        number: 96,
-        symbol: "Cm",
-        name: "Curium",
-        mass: "(247)",
-        category: "actinide"
-    },
-
-    {
-        number: 97,
-        symbol: "Bk",
-        name: "Berkelium",
-        mass: "(247)",
-        category: "actinide"
-    },
-
-    {
-        number: 98,
-        symbol: "Cf",
-        name: "Californium",
-        mass: "(251)",
-        category: "actinide"
-    },
-
-    {
-        number: 99,
-        symbol: "Es",
-        name: "Einsteinium",
-        mass: "(252)",
-        category: "actinide"
-    },
-
-    {
-        number: 100,
-        symbol: "Fm",
-        name: "Fermium",
-        mass: "(257)",
-        category: "actinide"
-    },
-
-    {
-        number: 101,
-        symbol: "Md",
-        name: "Mendelevium",
-        mass: "(258)",
-        category: "actinide"
-    },
-
-    {
-        number: 102,
-        symbol: "No",
-        name: "Nobelium",
-        mass: "(259)",
-        category: "actinide"
-    },
-
-    {
-        number: 103,
-        symbol: "Lr",
-        name: "Lawrencium",
-        mass: "(262)",
-        category: "actinide"
-    }
-
-];
-
-
-/* =========================================
-   CREATE ELEMENT CARD
-========================================= */
-
-function createElementCard(element) {
-
-    const card = document.createElement("div");
-
-    card.className = `element ${element.category}`;
-
-    card.innerHTML = `
-        <span class="atomic-number">
-            ${element.number}
-        </span>
-
-        <span class="symbol">
-            ${element.symbol}
-        </span>
-
-        <span class="element-name">
-            ${element.name}
-        </span>
-
-        <span class="atomic-mass">
-            ${element.mass}
-        </span>
-    `;
-
-    return card;
-}
-
-
-/* =========================================
-   CREATE F-BLOCK PLACEHOLDER
-========================================= */
-
-function createSeriesPlaceholder(
-    numberRange,
-    symbolRange,
-    name,
-    category
-) {
-
-    const card = document.createElement("div");
-
-    card.className =
-        `series-placeholder ${category}`;
-
-    card.innerHTML = `
-        <span class="placeholder-number">
-            ${numberRange}
-        </span>
-
-        <span class="placeholder-symbol">
-            ${symbolRange}
-        </span>
-
-        <span class="placeholder-name">
-            ${name}
-        </span>
-    `;
-
-    return card;
-}
-
-
-/* =========================================
-   MAIN TABLE
-========================================= */
-
-const periodicTable =
-    document.getElementById("periodic-table");
-
-
-elements.forEach(element => {
-
-    const card =
-        createElementCard(element);
-
-    card.style.gridColumn =
-        element.group;
-
-    card.style.gridRow =
-        element.period;
-
-    periodicTable.appendChild(card);
-
-});
-
-
-/* =========================================
-   F-BLOCK PLACEHOLDERS
-========================================= */
-
-const lanthanidePlaceholder =
-    createSeriesPlaceholder(
-        "57–71",
-        "La–Lu",
-        "Lanthanides",
-        "lanthanide"
-    );
-
-lanthanidePlaceholder.style.gridColumn = "3";
-
-lanthanidePlaceholder.style.gridRow = "6";
-
-periodicTable.appendChild(
-    lanthanidePlaceholder
-);
-
-
-const actinidePlaceholder =
-    createSeriesPlaceholder(
-        "89–103",
-        "Ac–Lr",
-        "Actinides",
-        "actinide"
-    );
-
-actinidePlaceholder.style.gridColumn = "3";
-
-actinidePlaceholder.style.gridRow = "7";
-
-periodicTable.appendChild(
-    actinidePlaceholder
-);
 
 
 /* =========================================
@@ -1514,6 +1176,132 @@ const actinides = [
 
 
 /* =========================================
+   CREATE ELEMENT CARD
+========================================= */
+
+function createElementCard(element) {
+
+    const card = document.createElement("div");
+
+    card.className = `element ${element.category}`;
+
+    card.innerHTML = `
+        <span class="atomic-number">
+            ${element.number}
+        </span>
+
+        <span class="symbol">
+            ${element.symbol}
+        </span>
+
+        <span class="element-name">
+            ${element.name}
+        </span>
+
+        <span class="atomic-mass">
+            ${element.mass}
+        </span>
+    `;
+
+    return card;
+}
+
+
+/* =========================================
+   CREATE F-BLOCK PLACEHOLDER
+========================================= */
+
+function createSeriesPlaceholder(
+    numberRange,
+    symbolRange,
+    name,
+    category
+) {
+
+    const card = document.createElement("div");
+
+    card.className =
+        `series-placeholder ${category}`;
+
+    card.innerHTML = `
+        <span class="placeholder-number">
+            ${numberRange}
+        </span>
+
+        <span class="placeholder-symbol">
+            ${symbolRange}
+        </span>
+
+        <span class="placeholder-name">
+            ${name}
+        </span>
+    `;
+
+    return card;
+}
+
+
+/* =========================================
+   MAIN TABLE
+========================================= */
+
+const periodicTable =
+    document.getElementById("periodic-table");
+
+
+elements.forEach(element => {
+
+    const card =
+        createElementCard(element);
+
+    card.style.gridColumn =
+        element.group;
+
+    card.style.gridRow =
+        element.period;
+
+    periodicTable.appendChild(card);
+
+});
+
+
+/* =========================================
+   F-BLOCK PLACEHOLDERS
+========================================= */
+
+const lanthanidePlaceholder =
+    createSeriesPlaceholder(
+        "57–71",
+        "La–Lu",
+        "Lanthanides",
+        "lanthanide"
+    );
+
+lanthanidePlaceholder.style.gridColumn = "3";
+lanthanidePlaceholder.style.gridRow = "6";
+
+periodicTable.appendChild(
+    lanthanidePlaceholder
+);
+
+
+const actinidePlaceholder =
+    createSeriesPlaceholder(
+        "89–103",
+        "Ac–Lr",
+        "Actinides",
+        "actinide"
+    );
+
+actinidePlaceholder.style.gridColumn = "3";
+actinidePlaceholder.style.gridRow = "7";
+
+periodicTable.appendChild(
+    actinidePlaceholder
+);
+
+
+/* =========================================
    RENDER F-BLOCK
 ========================================= */
 
@@ -1524,6 +1312,13 @@ function renderSeries(
 
     const container =
         document.getElementById(containerId);
+
+    if (!container) {
+        console.error(
+            `Could not find #${containerId}`
+        );
+        return;
+    }
 
     series.forEach(element => {
 
