@@ -1341,3 +1341,119 @@ renderSeries(
     "actinides",
     actinides
 );
+
+/* =========================================
+   CATEGORY HIGHLIGHTING
+========================================= */
+
+const legendItems =
+    document.querySelectorAll(".legend-item");
+
+const allElements =
+    document.querySelectorAll(".element");
+
+let activeCategory = null;
+
+
+legendItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        const category =
+            [...item.classList].find(
+                className =>
+                    className !== "legend-item" &&
+                    !className.includes("active")
+            );
+
+        if (!category) return;
+
+
+        /* -------------------------------------
+           CLICKING THE ACTIVE CATEGORY
+           RESET EVERYTHING
+        ------------------------------------- */
+
+        if (activeCategory === category) {
+
+            activeCategory = null;
+
+            allElements.forEach(element => {
+
+                element.classList.remove(
+                    "category-dimmed",
+                    "category-highlighted"
+                );
+
+            });
+
+            legendItems.forEach(legend => {
+
+                legend.classList.remove(
+                    "category-active"
+                );
+
+            });
+
+            document
+                .querySelector(".legend")
+                ?.classList.remove(
+                    "category-filtering"
+                );
+
+            return;
+        }
+
+
+        /* -------------------------------------
+           ACTIVATE CATEGORY
+        ------------------------------------- */
+
+        activeCategory = category;
+
+
+        /* -------------------------------------
+           UPDATE ELEMENTS
+        ------------------------------------- */
+
+        allElements.forEach(element => {
+
+            const isMatch =
+                element.classList.contains(category);
+
+            element.classList.toggle(
+                "category-highlighted",
+                isMatch
+            );
+
+            element.classList.toggle(
+                "category-dimmed",
+                !isMatch
+            );
+
+        });
+
+
+        /* -------------------------------------
+           UPDATE LEGEND
+        ------------------------------------- */
+
+        legendItems.forEach(legend => {
+
+            legend.classList.toggle(
+                "category-active",
+                legend.classList.contains(category)
+            );
+
+        });
+
+
+        document
+            .querySelector(".legend")
+            ?.classList.add(
+                "category-filtering"
+            );
+
+    });
+
+});
