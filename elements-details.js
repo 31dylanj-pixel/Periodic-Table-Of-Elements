@@ -127,19 +127,21 @@ function formatValue(
    FORMAT TEMPERATURE
 ========================================= */
 
-function kelvinToCelsius(
-    kelvin
-) {
+function kelvinToCelsius(value) {
 
     if (
-        kelvin === null ||
-        kelvin === undefined
+        value === null ||
+        value === undefined ||
+        value === ""
     ) {
         return "—";
     }
 
-    const celsius =
-        kelvin - 273.15;
+    const celsius = Number(value) - 273.15;
+
+    if (!Number.isFinite(celsius)) {
+        return "—";
+    }
 
     return `${celsius.toFixed(2)} °C`;
 }
@@ -824,20 +826,19 @@ function openElementDetails(
        PHYSICAL PROPERTIES
     ------------------------------------- */
 
-    document.getElementById(
-        "detail-melting-point"
-    ).textContent =
-        formatTemperature(
-            details.melting_point
-        );
-
-
-    document.getElementById(
-        "detail-boiling-point"
-    ).textContent =
-        formatTemperature(
-            details.boiling_point
-        );
+   document.getElementById(
+       "detail-melting-point"
+   ).textContent =
+       kelvinToCelsius(
+           details.melting_point
+       );
+   
+   document.getElementById(
+       "detail-boiling-point"
+   ).textContent =
+       kelvinToCelsius(
+           details.boiling_point
+       );
 
 
     /* -------------------------------------
