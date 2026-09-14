@@ -1350,7 +1350,9 @@ const legendItems =
     document.querySelectorAll(".legend-item");
 
 const allElements =
-    document.querySelectorAll(".element");
+    document.querySelectorAll(
+        ".element, .series-placeholder"
+    );
 
 let activeCategory = null;
 
