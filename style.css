@@ -807,46 +807,30 @@ body {
 
 
 /* DIMMED ELEMENTS */
-
-.element.category-dimmed {
+.element.category-dimmed,
+.series-placeholder.category-dimmed {
     opacity: 0.15;
-
-    filter:
-        saturate(0.25);
-
+    filter: saturate(0.25);
     transform: none;
 }
-
-
 /* KEEP DIMMED ELEMENTS FROM BRIGHTENING ON HOVER */
-
-.element.category-dimmed:hover {
+.element.category-dimmed:hover,
+.series-placeholder.category-dimmed:hover {
     transform: none;
-
-    background:
-        var(--card-background);
-
-    border-color:
-        var(--border);
-
+    background: var(--card-background);
+    border-color: var(--border);
     box-shadow: none;
 }
-
-
 /* HIGHLIGHTED ELEMENTS */
-
-.element.category-highlighted {
+.element.category-highlighted,
+.series-placeholder.category-highlighted {
     opacity: 1;
-
     filter: none;
-
     z-index: 5;
-
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.08),
         0 0 24px rgba(255, 255, 255, 0.08);
 }
-
 
 /* ACTIVE LEGEND ITEM */
 
