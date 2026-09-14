@@ -1459,3 +1459,67 @@ legendItems.forEach(item => {
     });
 
 });
+
+/* =========================================
+   GUIDE MODAL
+========================================= */
+
+const guideButton =
+    document.getElementById("guide-button");
+
+const guideModal =
+    document.getElementById("guide-modal");
+
+const guideModalClose =
+    document.getElementById("guide-modal-close");
+
+const guideModalBackdrop =
+    document.querySelector(
+        ".guide-modal-backdrop"
+    );
+
+
+/* OPEN */
+
+guideButton?.addEventListener("click", () => {
+
+    guideModal.classList.add("active");
+
+});
+
+
+/* CLOSE BUTTON */
+
+guideModalClose?.addEventListener("click", () => {
+
+    guideModal.classList.remove("active");
+
+});
+
+
+/* CLICK BACKDROP */
+
+guideModalBackdrop?.addEventListener(
+    "click",
+    () => {
+
+        guideModal.classList.remove("active");
+
+    }
+);
+
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown", event => {
+
+    if (
+        event.key === "Escape" &&
+        guideModal.classList.contains("active")
+    ) {
+
+        guideModal.classList.remove("active");
+
+    }
+
+});
