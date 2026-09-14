@@ -788,6 +788,82 @@ body {
 }
 
 /* =========================================
+   CATEGORY HIGHLIGHTING
+========================================= */
+
+.legend-item {
+    cursor: pointer;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.legend-item:hover {
+    color: var(--text);
+
+    transform: translateY(-1px);
+}
+
+
+/* DIMMED ELEMENTS */
+
+.element.category-dimmed {
+    opacity: 0.15;
+
+    filter:
+        saturate(0.25);
+
+    transform: none;
+}
+
+
+/* KEEP DIMMED ELEMENTS FROM BRIGHTENING ON HOVER */
+
+.element.category-dimmed:hover {
+    transform: none;
+
+    background:
+        var(--card-background);
+
+    border-color:
+        var(--border);
+
+    box-shadow: none;
+}
+
+
+/* HIGHLIGHTED ELEMENTS */
+
+.element.category-highlighted {
+    opacity: 1;
+
+    filter: none;
+
+    z-index: 5;
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 0 24px rgba(255, 255, 255, 0.08);
+}
+
+
+/* ACTIVE LEGEND ITEM */
+
+.legend-item.category-active {
+    color: var(--text);
+
+    font-weight: 700;
+}
+
+
+/* OTHER LEGEND ITEMS */
+
+.legend.category-filtering .legend-item:not(.category-active) {
+    opacity: 0.35;
+}
+
+/* =========================================
    ELEMENT DETAIL MODAL
 ========================================= */
 
