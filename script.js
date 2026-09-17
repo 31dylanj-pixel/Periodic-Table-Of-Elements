@@ -1524,74 +1524,17 @@ document.addEventListener("keydown", event => {
 
 });
 
-/* =========================================
+/* =========================================================
    ELEMENT SEARCH
-========================================= */
+========================================================= */
 
-const elementSearch =
-    document.getElementById(
-        "element-search"
+function getSearchableElements() {
+    return document.querySelectorAll(
+        ".element, .series-placeholder"
     );
-
-const clearElementSearch =
-    document.getElementById(
-        "clear-element-search"
-    );
-
-
-/* =========================================
-   GET SEARCHABLE TEXT
-========================================= */
-
-function getSearchableElementText(
-    element
-) {
-
-    /*
-       Read the information that is already
-       displayed inside the element card.
-    */
-
-    const atomicNumber =
-        element.querySelector(
-            ".atomic-number"
-        )?.textContent || "";
-
-    const symbol =
-        element.querySelector(
-            ".symbol"
-        )?.textContent || "";
-
-    const name =
-        element.querySelector(
-            ".element-name"
-        )?.textContent || "";
-
-    const atomicMass =
-        element.querySelector(
-            ".atomic-mass"
-        )?.textContent || "";
-
-
-    return [
-        atomicNumber,
-        symbol,
-        name,
-        atomicMass
-    ]
-        .join(" ")
-        .toLowerCase();
-
 }
 
-
-/* =========================================
-   GET ALL SEARCHABLE ELEMENTS
-========================================= */
-
-function getSearchableElementText(
-    element
-) {
+function getSearchableElementText(element) {
 
     const atomicNumber =
         element.querySelector(
@@ -1613,7 +1556,6 @@ function getSearchableElementText(
             ".atomic-mass"
         )?.textContent || "";
 
-
     return [
         atomicNumber,
         symbol,
@@ -1622,50 +1564,32 @@ function getSearchableElementText(
     ]
         .join(" ")
         .toLowerCase();
-
 }
-
-/* =========================================
-   CLEAR SEARCH
-========================================= */
 
 function clearSearchHighlights() {
 
-    getSearchableElements().forEach(
-        element => {
+    getSearchableElements().forEach(element => {
 
-            element.classList.remove(
-                "search-match",
-                "search-dimmed"
-            );
+        element.classList.remove(
+            "search-match",
+            "search-dimmed"
+        );
 
-        }
-    );
+    });
 
 }
 
-
-/* =========================================
-   SEARCH ELEMENTS
-========================================= */
-
-function searchElements(
-    query
-) {
+function searchElements(query) {
 
     const searchText =
         String(query ?? "")
             .toLowerCase()
             .trim();
 
-
     const searchableElements =
         getSearchableElements();
 
-
-    /*
-       Empty search = restore everything.
-    */
+    /* Empty search */
 
     if (!searchText) {
 
@@ -1676,49 +1600,40 @@ function searchElements(
         );
 
         return;
-
     }
-
 
     clearElementSearch?.classList.add(
         "visible"
     );
 
+    /* Search */
 
-    searchableElements.forEach(
-        element => {
+    searchableElements.forEach(element => {
 
-            const searchableText =
-                getSearchableElementText(
-                    element
-                );
+        const searchableText =
+            getSearchableElementText(element);
 
+        const matches =
+            searchableText.includes(searchText);
 
-            const matches =
-                searchableText.includes(
-                    searchText
-                );
+        element.classList.toggle(
+            "search-match",
+            matches
+        );
 
+        element.classList.toggle(
+            "search-dimmed",
+            !matches
+        );
 
-            element.classList.toggle(
-                "search-match",
-                matches
-            );
-
-            element.classList.toggle(
-                "search-dimmed",
-                !matches
-            );
-
-        }
-    );
+    });
 
 }
 
 
-/* =========================================
-   SEARCH INPUT
-========================================= */
+/* =========================================================
+   SEARCH EVENTS
+========================================================= */
 
 elementSearch?.addEventListener(
     "input",
@@ -1731,11 +1646,6 @@ elementSearch?.addEventListener(
     }
 );
 
-
-/* =========================================
-   CLEAR BUTTON
-========================================= */
-
 clearElementSearch?.addEventListener(
     "click",
     () => {
@@ -1743,7 +1653,6 @@ clearElementSearch?.addEventListener(
         if (elementSearch) {
 
             elementSearch.value = "";
-
             elementSearch.focus();
 
         }
