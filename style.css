@@ -935,15 +935,19 @@ body {
 ========================================= */
 
 .element-modal {
+
     position: fixed;
+
     inset: 0;
+
     z-index: 1000;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 40px;
+    padding: 35px;
 
     opacity: 0;
     visibility: hidden;
@@ -953,90 +957,141 @@ body {
         visibility 0.25s ease;
 }
 
+
 .element-modal.active {
+
     opacity: 1;
+
     visibility: visible;
 }
 
 
-/* BACKDROP */
+/* =========================================
+   BACKDROP
+========================================= */
 
 .element-modal-backdrop {
+
     position: absolute;
+
     inset: 0;
 
     background:
-        rgba(3, 9, 18, 0.78);
+        rgba(3, 9, 18, 0.82);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
 }
 
 
-/* DETAIL CARD */
+/* =========================================
+   MAIN CARD
+========================================= */
 
 .element-detail-card {
+
     position: relative;
+
     z-index: 1;
 
-    width: min(920px, 100%);
+    width:
+        min(
+            1180px,
+            100%
+        );
 
-    max-height: calc(100vh - 80px);
+    height:
+        min(
+            760px,
+            calc(100vh - 70px)
+        );
 
-    overflow-y: auto;
+    display: grid;
 
-    padding: 34px;
+    grid-template-columns:
+        1fr
+        1fr;
 
-    border: 1px solid rgba(255, 255, 255, 0.11);
+    overflow: hidden;
 
-    border-radius: 20px;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.11);
+
+    border-radius: 22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(20, 39, 65, 0.96),
-            rgba(8, 20, 36, 0.97)
+            rgba(20, 39, 65, 0.98),
+            rgba(8, 20, 36, 0.99)
         );
 
     box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        0 30px 100px
+        rgba(0, 0, 0, 0.6),
 
-    transform: translateY(18px) scale(0.97);
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.05);
+
+    transform:
+        translateY(18px)
+        scale(0.97);
 
     transition:
         transform 0.3s ease;
 }
 
-.element-modal.active .element-detail-card {
-    transform: translateY(0) scale(1);
+
+.element-modal.active
+.element-detail-card {
+
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 
-/* CLOSE BUTTON */
+/* =========================================
+   CLOSE BUTTON
+========================================= */
 
 .element-modal-close {
+
     position: absolute;
 
     top: 18px;
     right: 18px;
 
+    z-index: 20;
+
     width: 38px;
     height: 38px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.05);
+    background:
+        rgba(255, 255, 255, 0.05);
 
-    color: var(--text);
+    color:
+        var(--text);
 
     font-family: inherit;
+
     font-size: 25px;
+
     line-height: 1;
 
     cursor: pointer;
@@ -1046,18 +1101,65 @@ body {
         transform 0.2s ease;
 }
 
+
 .element-modal-close:hover {
-    background: rgba(255, 255, 255, 0.11);
-    transform: rotate(90deg);
+
+    background:
+        rgba(255, 255, 255, 0.11);
+
+    transform:
+        rotate(90deg);
 }
 
 
-/* HERO */
+/* =========================================
+   LEFT INFORMATION PANEL
+========================================= */
+
+.element-info-panel {
+
+    min-width: 0;
+
+    height: 100%;
+
+    overflow-y: auto;
+
+    padding: 34px 34px 50px;
+}
+
+
+.element-info-panel::-webkit-scrollbar {
+
+    width: 6px;
+}
+
+
+.element-info-panel::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+
+.element-info-panel::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
 
 .element-detail-hero {
+
     display: flex;
+
     align-items: center;
-    gap: 24px;
+
+    gap: 22px;
 
     padding-right: 50px;
 
@@ -1065,64 +1167,91 @@ body {
 }
 
 
-/* SYMBOL */
+/* =========================================
+   SYMBOL BOX
+========================================= */
 
 .detail-symbol-box {
-    flex: 0 0 125px;
 
-    width: 125px;
-    height: 125px;
+    flex:
+        0 0 115px;
+
+    width: 115px;
+    height: 115px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
     border-radius: 18px;
 
     background:
         rgba(255, 255, 255, 0.055);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.05);
 }
 
+
 .detail-atomic-number {
-    color: var(--muted);
+
+    color:
+        var(--muted);
 
     font-size: 13px;
+
     font-weight: 600;
 }
 
+
 .detail-symbol {
+
     margin-top: 3px;
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    font-size: 52px;
+    font-size: 50px;
+
     font-weight: 700;
 
     letter-spacing: -2px;
 }
 
 
-/* TITLE */
+/* =========================================
+   TITLE
+========================================= */
 
 .detail-title {
+
     min-width: 0;
 }
 
+
 .detail-category {
+
     display: inline-block;
+
     margin-bottom: 6px;
-    font-size: 11px;
+
+    font-size: 10px;
+
     font-weight: 700;
+
     letter-spacing: 1.2px;
+
     text-transform: uppercase;
 }
 
-/* Match element category colors */
 
 .detail-category.alkali-metal {
     color: #ef4444;
@@ -1164,248 +1293,808 @@ body {
     color: #d946ef;
 }
 
+
 .detail-title h2 {
+
     margin: 0;
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    font-size: 34px;
+    font-size: 31px;
+
     font-weight: 700;
 
     letter-spacing: -1px;
 }
 
+
 .detail-title p {
-    max-width: 650px;
+
+    max-width: 520px;
 
     margin: 8px 0 0;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    font-size: 14px;
+    font-size: 12px;
+
     line-height: 1.7;
 }
 
 
-/* QUICK STATS */
+/* =========================================
+   QUICK STATS
+========================================= */
 
 .detail-stats {
-    display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 10px;
-
-    margin-bottom: 30px;
-}
-
-.detail-stat {
-    padding: 15px 17px;
-
-    border: 1px solid var(--border);
-    border-radius: 12px;
-
-    background:
-        rgba(255, 255, 255, 0.035);
-}
-
-.detail-stat-label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: var(--muted);
-
-    font-size: 10px;
-    font-weight: 600;
-
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-}
-
-.detail-stat strong {
-    color: var(--text);
-
-    font-size: 16px;
-    font-weight: 600;
-}
-
-
-/* SECTIONS */
-
-.detail-section {
-    margin-top: 28px;
-}
-
-.detail-section-heading {
-    margin-bottom: 12px;
-
-    color: var(--text);
-
-    font-size: 12px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-
-/* INFORMATION GRID */
-
-.detail-grid {
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 10px;
+    gap: 9px;
+
+    margin-bottom: 28px;
 }
+
+
+.detail-stat {
+
+    padding:
+        13px
+        15px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.detail-stat-label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color:
+        var(--muted);
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+
+.detail-stat strong {
+
+    color:
+        var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   DETAIL SECTIONS
+========================================= */
+
+.detail-section {
+
+    margin-top: 26px;
+}
+
+
+.detail-section-heading {
+
+    margin-bottom: 11px;
+
+    color:
+        var(--text);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   INFORMATION GRID
+========================================= */
+
+.detail-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 9px;
+}
+
 
 .detail-info-card {
-    min-height: 70px;
+
+    min-height: 65px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
 
-    padding: 14px 16px;
+    padding:
+        13px
+        15px;
 
-    border: 1px solid var(--border);
-    border-radius: 11px;
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 10px;
 
     background:
         rgba(255, 255, 255, 0.035);
 }
+
 
 .detail-info-card span {
-    margin-bottom: 6px;
 
-    color: var(--muted);
+    margin-bottom: 5px;
 
-    font-size: 10px;
+    color:
+        var(--muted);
+
+    font-size: 9px;
+
     font-weight: 600;
 
     letter-spacing: 0.7px;
+
     text-transform: uppercase;
 }
 
-.detail-info-card strong {
-    color: var(--text);
 
-    font-size: 14px;
+.detail-info-card strong {
+
+    color:
+        var(--text);
+
+    font-size: 12px;
+
     font-weight: 600;
+
+    line-height: 1.4;
+
+    word-break: break-word;
 }
+
 
 .detail-info-wide {
-    grid-column: span 2;
+
+    grid-column:
+        span 2;
 }
 
 
-/* DISCOVERY */
+/* =========================================
+   DISCOVERY
+========================================= */
 
 .detail-discovery {
+
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+
+    grid-template-columns:
+        1fr;
+
+    gap: 9px;
 }
 
+
 .detail-discovery > div {
+
     display: flex;
+
     flex-direction: column;
 
-    padding: 15px 16px;
+    padding:
+        14px
+        15px;
 
-    border: 1px solid var(--border);
-    border-radius: 11px;
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 10px;
 
     background:
         rgba(255, 255, 255, 0.035);
 }
 
+
 .detail-discovery span {
-    margin-bottom: 6px;
 
-    color: var(--muted);
+    margin-bottom: 5px;
 
-    font-size: 10px;
+    color:
+        var(--muted);
+
+    font-size: 9px;
+
     font-weight: 600;
 
     letter-spacing: 0.7px;
+
     text-transform: uppercase;
 }
 
-.detail-discovery strong {
-    color: var(--text);
 
-    font-size: 14px;
+.detail-discovery strong {
+
+    color:
+        var(--text);
+
+    font-size: 13px;
+
     font-weight: 600;
 }
 
 
-/* SCROLLBAR */
+/* =========================================
+   RIGHT ATOM PANEL
+========================================= */
 
-.element-detail-card::-webkit-scrollbar {
-    width: 6px;
+.atom-panel {
+
+    position: relative;
+
+    min-width: 0;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding:
+        50px
+        38px
+        32px;
+
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(37, 99, 235, 0.11),
+            transparent 50%
+        );
 }
 
-.element-detail-card::-webkit-scrollbar-track {
-    background: transparent;
+
+/* =========================================
+   ATOM HEADER
+========================================= */
+
+.atom-panel-header {
+
+    position: relative;
+
+    z-index: 2;
 }
 
-.element-detail-card::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.12);
+
+.atom-eyebrow {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color:
+        #7da8ff;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+
+.atom-panel-header h3 {
+
+    color:
+        var(--text);
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+.atom-panel-header p {
+
+    max-width: 360px;
+
+    margin-top: 5px;
+
+    color:
+        var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   ATOM STAGE
+========================================= */
+
+.atom-stage {
+
+    position: relative;
+
+    flex: 1;
+
+    min-height: 390px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   ORBIT CONTAINER
+========================================= */
+
+.atom-orbits {
+
+    position: absolute;
+
+    width: 360px;
+
+    height: 360px;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* =========================================
+   ORBIT RINGS
+========================================= */
+
+.atom-orbit {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    border:
+        1px solid
+        rgba(125, 168, 255, 0.16);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(125, 168, 255, 0.025),
+
+        0 0 20px
+        rgba(125, 168, 255, 0.025);
+}
+
+
+/* =========================================
+   NUCLEUS
+========================================= */
+
+.atom-nucleus {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(125, 168, 255, 0.45);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(125, 168, 255, 0.22),
+            rgba(37, 99, 235, 0.08)
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(125, 168, 255, 0.18),
+
+        inset 0 0 20px
+        rgba(125, 168, 255, 0.08);
+}
+
+
+.atom-nucleus-number {
+
+    color:
+        var(--text);
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+.atom-nucleus-label {
+
+    margin-top: 5px;
+
+    color:
+        #7da8ff;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   ATOM SUMMARY
+========================================= */
+
+.atom-summary {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+
+    margin-top: auto;
+}
+
+
+.atom-summary-item {
+
+    padding:
+        11px
+        10px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
     border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    text-align: center;
 }
 
 
-/* MOBILE */
+.atom-summary-item span {
 
-@media (max-width: 700px) {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        var(--muted);
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+}
+
+
+.atom-summary-item strong {
+
+    color:
+        var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   ATOM LEGEND
+========================================= */
+
+.atom-legend {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 17px;
+
+    margin-top: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.4);
+
+    font-size: 8px;
+
+    font-weight: 500;
+}
+
+
+.atom-legend span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.atom-legend-dot {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+}
+
+
+.atom-legend-dot.proton {
+
+    background:
+        #7da8ff;
+
+    box-shadow:
+        0 0 7px
+        rgba(125, 168, 255, 0.55);
+}
+
+
+.atom-legend-dot.electron {
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 7px
+        rgba(255, 255, 255, 0.7);
+}
+
+
+.atom-legend-ring {
+
+    width: 8px;
+    height: 8px;
+
+    border:
+        1px solid
+        rgba(125, 168, 255, 0.35);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
 
     .element-modal {
+
         padding: 15px;
     }
 
+
     .element-detail-card {
-        max-height: calc(100vh - 30px);
-        padding: 22px;
-        border-radius: 16px;
+
+        width: 100%;
+
+        height:
+            calc(100vh - 30px);
+
+        grid-template-columns:
+            1fr;
     }
+
+
+    .element-info-panel {
+
+        height: 55vh;
+
+        min-height: 0;
+    }
+
+
+    .atom-panel {
+
+        height: 45vh;
+
+        min-height: 360px;
+
+        border-left: none;
+
+        border-top:
+            1px solid
+            rgba(255, 255, 255, 0.07);
+
+        padding:
+            25px;
+    }
+
+
+    .atom-stage {
+
+        min-height: 250px;
+    }
+
+
+    .atom-orbits {
+
+        width: 240px;
+        height: 240px;
+    }
+
 
     .element-detail-hero {
+
         align-items: flex-start;
-        gap: 16px;
+
+        gap: 15px;
     }
 
+
     .detail-symbol-box {
+
         flex-basis: 90px;
+
         width: 90px;
         height: 90px;
     }
 
+
     .detail-symbol {
+
         font-size: 38px;
     }
 
+
     .detail-title h2 {
-        font-size: 26px;
+
+        font-size: 25px;
     }
 
+}
+
+
+@media (max-width: 600px) {
+
+    .element-info-panel {
+
+        padding:
+            25px
+            20px
+            40px;
+    }
+
+
+    .atom-panel {
+
+        padding:
+            22px
+            18px
+            25px;
+    }
+
+
+    .detail-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .detail-info-wide {
+
+        grid-column:
+            span 1;
+    }
+
+
     .detail-stats {
+
         grid-template-columns:
             repeat(2, 1fr);
     }
 
-    .detail-grid {
-        grid-template-columns: 1fr;
+
+    .atom-orbits {
+
+        width: 210px;
+        height: 210px;
     }
 
-    .detail-info-wide {
-        grid-column: span 1;
+
+    .atom-nucleus {
+
+        width: 65px;
+        height: 65px;
     }
+
+
+    .atom-nucleus-number {
+
+        font-size: 17px;
+    }
+
+
+    .atom-summary-item {
+
+        padding:
+            9px
+            5px;
+    }
+
 }
-
 /* =========================================
    GUIDE MODAL
 ========================================= */
