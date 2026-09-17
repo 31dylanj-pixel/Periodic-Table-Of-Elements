@@ -828,34 +828,6 @@ function createAtomModel(details, element) {
 
     }
 
-
-    /*
-        Nucleus count display.
-    */
-
-    const nucleusInfo =
-        document.createElement("div");
-
-    nucleusInfo.className =
-        "atom-nucleus-info";
-
-
-    nucleusInfo.innerHTML = `
-        <strong>${element.number}</strong>
-        <span>p⁺</span>
-    `;
-
-
-    nucleus.appendChild(
-        nucleusCore
-    );
-
-
-    nucleus.appendChild(
-        nucleusInfo
-    );
-
-
     /*
         =====================================
         ELECTRON SHELLS
