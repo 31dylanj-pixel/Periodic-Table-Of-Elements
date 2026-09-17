@@ -1775,8 +1775,8 @@ body {
     top: 50%;
     left: 50%;
 
-    width: 92px;
-    height: 92px;
+    width: 105px;
+    height: 105px;
 
     display: flex;
 
@@ -1786,13 +1786,21 @@ body {
     transform:
         translate(-50%, -50%);
 
-    border: none;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
 
     border-radius: 50%;
 
-    background: transparent;
+    background:
+        rgba(6, 13, 24, 0.72);
 
-    box-shadow: none;
+    box-shadow:
+        0 0 25px
+        rgba(0, 0, 0, 0.45),
+
+        inset 0 0 18px
+        rgba(255, 255, 255, 0.025);
 }
 
 
@@ -1806,12 +1814,15 @@ body {
 
     inset: 0;
 
+    width: 100%;
+    height: 100%;
+
     border-radius: 50%;
 }
 
 
 /* =========================================
-   PROTONS + NEUTRONS
+   NUCLEUS PARTICLES
 ========================================= */
 
 .nucleus-particle {
@@ -1821,11 +1832,11 @@ body {
     top: 50%;
     left: 50%;
 
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 
-    margin-left: -10px;
-    margin-top: -10px;
+    margin-left: -9px;
+    margin-top: -9px;
 
     border-radius: 50%;
 
@@ -1834,53 +1845,62 @@ body {
             var(--particle-x),
             var(--particle-y)
         );
+
+    z-index: 2;
 }
 
 
-/* PROTON */
+/* =========================================
+   PROTON
+========================================= */
 
 .nucleus-particle.proton {
 
     background:
         radial-gradient(
-            circle at 35% 30%,
-            #ffffff,
-            #7da8ff 38%,
-            #3973e6 75%
+            circle at 32% 28%,
+            #ffffff 0%,
+            #9fc0ff 32%,
+            #5b8ff0 68%,
+            #3567c7 100%
         );
 
     box-shadow:
-        0 0 10px
-        rgba(125, 168, 255, 0.7);
+        0 0 9px
+        rgba(125, 168, 255, 0.65);
 }
 
 
-/* NEUTRON */
+/* =========================================
+   NEUTRON
+========================================= */
 
 .nucleus-particle.neutron {
 
     background:
         radial-gradient(
-            circle at 35% 30%,
-            #ffffff,
-            #a1a9b8 38%,
-            #596579 75%
+            circle at 32% 28%,
+            #ffffff 0%,
+            #c1c7d1 32%,
+            #858e9d 68%,
+            #5d6675 100%
         );
 
     box-shadow:
-        0 0 8px
-        rgba(142, 155, 173, 0.45);
+        0 0 7px
+        rgba(180, 190, 205, 0.3);
 }
 
 
 /* =========================================
-   REMOVE CENTER LABEL
+   HIDE OLD CENTER LABEL
 ========================================= */
 
 .atom-nucleus-info {
 
     display: none;
 }
+
 /* =========================================
    ATOM SUMMARY
 ========================================= */
