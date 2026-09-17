@@ -1539,70 +1539,137 @@ const clearElementSearch =
     );
 
 
-function normalizeSearchText(value) {
+/* =========================================
+   GET SEARCHABLE TEXT
+========================================= */
 
-    return String(value ?? "")
-        .toLowerCase()
-        .trim();
+function getSearchableElementText(
+    element
+) {
 
-}
+    /*
+       Read the information that is already
+       displayed inside the element card.
+    */
 
+    const atomicNumber =
+        element.querySelector(
+            ".atomic-number"
+        )?.textContent || "";
 
-function getSearchableElementText(element) {
+    const symbol =
+        element.querySelector(
+            ".symbol"
+        )?.textContent || "";
+
+    const name =
+        element.querySelector(
+            ".element-name"
+        )?.textContent || "";
+
+    const atomicMass =
+        element.querySelector(
+            ".atomic-mass"
+        )?.textContent || "";
+
 
     return [
-
-        element.name,
-        element.symbol,
-        element.atomic_number,
-        element.number,
-        element.atomic_mass
-
+        atomicNumber,
+        symbol,
+        name,
+        atomicMass
     ]
-        .filter(value => value !== undefined && value !== null)
         .join(" ")
         .toLowerCase();
 
 }
 
 
-function getSearchableElements() {
+/* =========================================
+   GET ALL SEARCHABLE ELEMENTS
+========================================= */
 
-    return document.querySelectorAll(
-        ".element, .series-placeholder"
+function getSearchableElementText(
+    element
+) {
+
+    const atomicNumber =
+        element.querySelector(
+            ".atomic-number, .placeholder-number"
+        )?.textContent || "";
+
+    const symbol =
+        element.querySelector(
+            ".symbol, .placeholder-symbol"
+        )?.textContent || "";
+
+    const name =
+        element.querySelector(
+            ".element-name, .placeholder-name"
+        )?.textContent || "";
+
+    const atomicMass =
+        element.querySelector(
+            ".atomic-mass"
+        )?.textContent || "";
+
+
+    return [
+        atomicNumber,
+        symbol,
+        name,
+        atomicMass
+    ]
+        .join(" ")
+        .toLowerCase();
+
+}
+
+/* =========================================
+   CLEAR SEARCH
+========================================= */
+
+function clearSearchHighlights() {
+
+    getSearchableElements().forEach(
+        element => {
+
+            element.classList.remove(
+                "search-match",
+                "search-dimmed"
+            );
+
+        }
     );
 
 }
 
 
-function clearSearchHighlights() {
+/* =========================================
+   SEARCH ELEMENTS
+========================================= */
 
-    getSearchableElements().forEach(element => {
-
-        element.classList.remove(
-            "search-match",
-            "search-dimmed"
-        );
-
-    });
-
-}
-
-
-function searchElements(query) {
+function searchElements(
+    query
+) {
 
     const searchText =
-        normalizeSearchText(query);
+        String(query ?? "")
+            .toLowerCase()
+            .trim();
 
 
     const searchableElements =
         getSearchableElements();
 
 
-    clearSearchHighlights();
-
+    /*
+       Empty search = restore everything.
+    */
 
     if (!searchText) {
+
+        clearSearchHighlights();
 
         clearElementSearch?.classList.remove(
             "visible"
@@ -1618,36 +1685,40 @@ function searchElements(query) {
     );
 
 
-    searchableElements.forEach(element => {
+    searchableElements.forEach(
+        element => {
 
-        const searchableText =
-            getSearchableElementText(
-                element
+            const searchableText =
+                getSearchableElementText(
+                    element
+                );
+
+
+            const matches =
+                searchableText.includes(
+                    searchText
+                );
+
+
+            element.classList.toggle(
+                "search-match",
+                matches
             );
 
-
-        const matches =
-            searchableText.includes(
-                searchText
+            element.classList.toggle(
+                "search-dimmed",
+                !matches
             );
 
-
-        element.classList.toggle(
-            "search-match",
-            matches
-        );
-
-        element.classList.toggle(
-            "search-dimmed",
-            !matches
-        );
-
-    });
+        }
+    );
 
 }
 
 
-/* SEARCH INPUT */
+/* =========================================
+   SEARCH INPUT
+========================================= */
 
 elementSearch?.addEventListener(
     "input",
@@ -1661,7 +1732,9 @@ elementSearch?.addEventListener(
 );
 
 
-/* CLEAR BUTTON */
+/* =========================================
+   CLEAR BUTTON
+========================================= */
 
 clearElementSearch?.addEventListener(
     "click",
@@ -1677,7 +1750,7 @@ clearElementSearch?.addEventListener(
 
         clearSearchHighlights();
 
-        clearElementSearch.classList.remove(
+        clearElementSearch?.classList.remove(
             "visible"
         );
 
