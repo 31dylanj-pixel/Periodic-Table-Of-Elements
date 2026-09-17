@@ -648,9 +648,11 @@ function createAtomModel(details, element) {
         Clear previous atom.
     */
 
-    atomOrbits.innerHTML = "";
+   atomOrbits.innerHTML = "";
 
-    nucleus.innerHTML = "";
+   nucleus
+       .querySelectorAll(".atom-nucleus-core")
+       .forEach(core => core.remove());
 
 
     /*
@@ -827,7 +829,15 @@ function createAtomModel(details, element) {
         );
 
     }
-
+    /*
+       Put the particle cluster into
+       the existing nucleus.
+   */
+   
+   nucleus.appendChild(
+       nucleusCore
+   );
+   
     /*
         =====================================
         ELECTRON SHELLS
