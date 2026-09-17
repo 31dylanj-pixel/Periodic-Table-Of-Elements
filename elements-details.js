@@ -614,6 +614,161 @@ async function loadElementData() {
 
 }
 
+/* =========================================
+   ATOM MODEL
+========================================= */
+
+function createAtomModel(details, element) {
+
+    const atomOrbits =
+        document.getElementById("atom-orbits");
+
+    const nucleusNumber =
+        document.getElementById("atom-nucleus-number");
+
+    const electronCount =
+        document.getElementById("atom-electron-count");
+
+    const shellCount =
+        document.getElementById("atom-shell-count");
+
+    const valenceCount =
+        document.getElementById("atom-valence-count");
+
+
+    if (!atomOrbits) {
+        return;
+    }
+
+
+    /*
+        Clear the previous atom.
+    */
+
+    atomOrbits.innerHTML = "";
+
+
+    /*
+        Get electron shell data.
+
+        Example:
+
+        Hydrogen → [1]
+        Carbon   → [2, 4]
+        Sodium   → [2, 8, 1]
+    */
+
+    const shells =
+        Array.isArray(details.electrons_per_shell)
+            ? details.electrons_per_shell
+            : [];
+
+
+    /*
+        Update nucleus.
+    */
+
+    if (nucleusNumber) {
+
+        nucleusNumber.textContent =
+            element.number;
+
+    }
+
+
+    /*
+        Calculate total electrons.
+    */
+
+    const totalElectrons =
+        shells.reduce(
+            (total, count) =>
+                total + Number(count || 0),
+            0
+        );
+
+
+    if (electronCount) {
+
+        electronCount.textContent =
+            totalElectrons;
+
+    }
+
+
+    if (shellCount) {
+
+        shellCount.textContent =
+            shells.length;
+
+    }
+
+
+    if (valenceCount) {
+
+        valenceCount.textContent =
+            shells.length
+                ? shells[shells.length - 1]
+                : "—";
+
+    }
+
+
+    /*
+        Create one orbit for each shell.
+    */
+
+    shells.forEach(
+        (electronNumber, shellIndex) => {
+
+            const orbit =
+                document.createElement("div");
+
+
+            orbit.className =
+                "atom-orbit";
+
+
+            /*
+                The first shell starts at
+                105px and each additional
+                shell expands outward.
+            */
+
+            const size =
+                105 +
+                shellIndex * 55;
+
+
+            orbit.style.width =
+                `${size}px`;
+
+            orbit.style.height =
+                `${size}px`;
+
+
+            /*
+                Store shell information.
+
+                We'll use this in Phase 3
+                when we add orbital animation.
+            */
+
+            orbit.dataset.shell =
+                shellIndex + 1;
+
+            orbit.dataset.electrons =
+                electronNumber;
+
+
+            atomOrbits.appendChild(
+                orbit
+            );
+
+        }
+    );
+
+}
 
 /* =========================================
    OPEN DETAIL VIEW
@@ -623,21 +778,25 @@ function openElementDetails(
     element
 ) {
 
-    const details =
+   const details =
         detailedElements[
             element.symbol
         ];
 
 
-    if (!details) {
+   if (!details) {
 
         console.warn(
             `No detailed data found for ${element.name}`
         );
 
         return;
-    }
+   }
 
+   createAtomModel(
+       details,
+       element
+   );
 
     /* -------------------------------------
        BASIC INFORMATION
