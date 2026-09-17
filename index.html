@@ -190,7 +190,7 @@
     </main>
 
     <!-- =========================================
-     ELEMENT DETAIL MODAL
+         ELEMENT DETAIL MODAL
     ========================================= -->
     
     <div class="element-modal" id="element-modal">
@@ -207,294 +207,447 @@
                 ×
             </button>
     
-            <!-- HERO -->
     
-            <div class="element-detail-hero">
+            <!-- =====================================
+                 LEFT INFORMATION PANEL
+            ====================================== -->
     
-                <div class="detail-symbol-box">
+            <div class="element-info-panel">
     
-                    <span
-                        class="detail-atomic-number"
-                        id="detail-atomic-number"
-                    >
-                        1
-                    </span>
+                <!-- HERO -->
     
-                    <span
-                        class="detail-symbol"
-                        id="detail-symbol"
-                    >
-                        H
-                    </span>
+                <div class="element-detail-hero">
+    
+                    <div class="detail-symbol-box">
+    
+                        <span
+                            class="detail-atomic-number"
+                            id="detail-atomic-number"
+                        >
+                            1
+                        </span>
+    
+                        <span
+                            class="detail-symbol"
+                            id="detail-symbol"
+                        >
+                            H
+                        </span>
+    
+                    </div>
+    
+                    <div class="detail-title">
+    
+                        <span
+                            class="detail-category"
+                            id="detail-category"
+                        >
+                            Nonmetal
+                        </span>
+    
+                        <h2 id="detail-name">
+                            Hydrogen
+                        </h2>
+    
+                        <p id="detail-description">
+                            Hydrogen is the lightest element and the most
+                            abundant element in the universe.
+                        </p>
+    
+                    </div>
     
                 </div>
     
-                <div class="detail-title">
     
-                    <span
-                        class="detail-category"
-                        id="detail-category"
-                    >
-                        Nonmetal
+                <!-- QUICK STATS -->
+    
+                <div class="detail-stats">
+    
+                    <div class="detail-stat">
+    
+                        <span class="detail-stat-label">
+                            Atomic Mass
+                        </span>
+    
+                        <strong id="detail-mass">
+                            1.008
+                        </strong>
+    
+                    </div>
+    
+                    <div class="detail-stat">
+    
+                        <span class="detail-stat-label">
+                            State
+                        </span>
+    
+                        <strong id="detail-state">
+                            Gas
+                        </strong>
+    
+                    </div>
+    
+                    <div class="detail-stat">
+    
+                        <span class="detail-stat-label">
+                            Period
+                        </span>
+    
+                        <strong id="detail-period">
+                            1
+                        </strong>
+    
+                    </div>
+    
+                    <div class="detail-stat">
+    
+                        <span class="detail-stat-label">
+                            Group
+                        </span>
+    
+                        <strong id="detail-group">
+                            1
+                        </strong>
+    
+                    </div>
+    
+                </div>
+    
+    
+                <!-- ELECTRONIC STRUCTURE -->
+    
+                <section class="detail-section">
+    
+                    <div class="detail-section-heading">
+                        Electron Structure
+                    </div>
+    
+                    <div class="detail-grid">
+    
+                        <div class="detail-info-card detail-info-wide">
+    
+                            <span>
+                                Electron Configuration
+                            </span>
+    
+                            <strong id="detail-noble-configuration">
+                                1s¹
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Electron Shells
+                            </span>
+    
+                            <strong id="detail-shells">
+                                1
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Valence Electrons
+                            </span>
+    
+                            <strong id="detail-valence-electrons">
+                                1
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Common Ions
+                            </span>
+    
+                            <strong id="detail-common-ions">
+                                H⁺
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Electronegativity
+                            </span>
+    
+                            <strong id="detail-electronegativity">
+                                2.20
+                            </strong>
+    
+                        </div>
+    
+                    </div>
+    
+                </section>
+    
+    
+                <!-- ATOMIC PROPERTIES -->
+    
+                <section class="detail-section">
+    
+                    <div class="detail-section-heading">
+                        Atomic Properties
+                    </div>
+    
+                    <div class="detail-grid">
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Atomic Radius
+                            </span>
+    
+                            <strong id="detail-atomic-radius">
+                                —
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Ionization Energy
+                            </span>
+    
+                            <strong id="detail-ionization-energy">
+                                —
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Electron Affinity
+                            </span>
+    
+                            <strong id="detail-electron-affinity">
+                                —
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Common Isotopes
+                            </span>
+    
+                            <strong id="detail-isotopes">
+                                —
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card detail-info-wide">
+    
+                            <span>
+                                Density
+                            </span>
+    
+                            <strong id="detail-density">
+                                —
+                            </strong>
+    
+                        </div>
+    
+                    </div>
+    
+                </section>
+    
+    
+                <!-- PHYSICAL PROPERTIES -->
+    
+                <section class="detail-section">
+    
+                    <div class="detail-section-heading">
+                        Physical Properties
+                    </div>
+    
+                    <div class="detail-grid">
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Melting Point
+                            </span>
+    
+                            <strong id="detail-melting-point">
+                                −259.16 °C
+                            </strong>
+    
+                        </div>
+    
+                        <div class="detail-info-card">
+    
+                            <span>
+                                Boiling Point
+                            </span>
+    
+                            <strong id="detail-boiling-point">
+                                −252.87 °C
+                            </strong>
+    
+                        </div>
+    
+                    </div>
+    
+                </section>
+    
+    
+                <!-- DISCOVERY -->
+    
+                <section class="detail-section">
+    
+                    <div class="detail-section-heading">
+                        Discovery
+                    </div>
+    
+                    <div class="detail-discovery">
+    
+                        <div>
+    
+                            <span>
+                                Discovery Year
+                            </span>
+    
+                            <strong id="detail-discovery-year">
+                                1766
+                            </strong>
+    
+                        </div>
+    
+                    </div>
+    
+                </section>
+    
+            </div>
+    
+    
+            <!-- =====================================
+                 RIGHT ATOM PANEL
+            ====================================== -->
+    
+            <div class="atom-panel">
+    
+                <div class="atom-panel-header">
+    
+                    <span class="atom-eyebrow">
+                        ATOMIC MODEL
                     </span>
     
-                    <h2 id="detail-name">
-                        Hydrogen
-                    </h2>
+                    <h3>
+                        Electron Structure
+                    </h3>
     
-                    <p id="detail-description">
-                        Hydrogen is the lightest element and the most abundant
-                        element in the universe.
+                    <p>
+                        A visual representation of this element's
+                        electron shells.
                     </p>
     
                 </div>
     
-            </div>
     
+                <!-- ATOM -->
     
-            <!-- QUICK STATS -->
+                <div class="atom-stage" id="atom-stage">
     
-            <div class="detail-stats">
-    
-                <div class="detail-stat">
-    
-                    <span class="detail-stat-label">
-                        Atomic Mass
-                    </span>
-    
-                    <strong id="detail-mass">
-                        1.008
-                    </strong>
-    
-                </div>
-    
-                <div class="detail-stat">
-    
-                    <span class="detail-stat-label">
-                        State
-                    </span>
-    
-                    <strong id="detail-state">
-                        Gas
-                    </strong>
-    
-                </div>
-    
-                <div class="detail-stat">
-    
-                    <span class="detail-stat-label">
-                        Period
-                    </span>
-    
-                    <strong id="detail-period">
-                        1
-                    </strong>
-    
-                </div>
-    
-                <div class="detail-stat">
-    
-                    <span class="detail-stat-label">
-                        Group
-                    </span>
-    
-                    <strong id="detail-group">
-                        1
-                    </strong>
-    
-                </div>
-    
-            </div>
-    
-    
-            <!-- ELECTRONIC STRUCTURE -->
-    
-            <section class="detail-section">
-
-                <div class="detail-section-heading">
-                    Electron Structure
-                </div>
-            
-                <div class="detail-grid">
-                    
-                    <div class="detail-info-card detail-info-wide">
-            
-                        <span>
-                            Electron Configuration
-                        </span>
-            
-                        <strong id="detail-noble-configuration">
-                            1s¹
-                        </strong>
-            
+                    <div
+                        class="atom-orbits"
+                        id="atom-orbits"
+                    >
+                        <!-- Generated by JavaScript -->
                     </div>
-            
-                    <div class="detail-info-card">
-            
-                        <span>
-                            Electron Shells
+    
+                    <div class="atom-nucleus">
+    
+                        <span
+                            class="atom-nucleus-number"
+                            id="atom-nucleus-number"
+                        >
+                            1
                         </span>
-            
-                        <strong id="detail-shells">
+    
+                        <span class="atom-nucleus-label">
+                            p⁺
+                        </span>
+    
+                    </div>
+    
+                </div>
+    
+    
+                <!-- ATOM SUMMARY -->
+    
+                <div class="atom-summary">
+    
+                    <div class="atom-summary-item">
+    
+                        <span>
+                            Electrons
+                        </span>
+    
+                        <strong id="atom-electron-count">
                             1
                         </strong>
-            
+    
                     </div>
-            
-                    <div class="detail-info-card">
-            
+    
+                    <div class="atom-summary-item">
+    
                         <span>
-                            Valence Electrons
+                            Shells
                         </span>
-            
-                        <strong id="detail-valence-electrons">
+    
+                        <strong id="atom-shell-count">
                             1
                         </strong>
-            
-                    </div>
-            
-                    <div class="detail-info-card">
-            
-                        <span>
-                            Common Ions
-                        </span>
-            
-                        <strong id="detail-common-ions">
-                            H⁺
-                        </strong>
-            
-                    </div>
-            
-                    <div class="detail-info-card">
-            
-                        <span>
-                            Electronegativity
-                        </span>
-            
-                        <strong id="detail-electronegativity">
-                            2.20
-                        </strong>
-            
-                    </div>
-            
-                </div>
-            
-            </section>
     
-    
-            <!-- ATOMIC PROPERTIES -->
-    
-            <section class="detail-section">
-
-                <div class="detail-section-heading">
-                    Atomic Properties
-                </div>
-            
-                <div class="detail-grid">
-            
-                    <div class="detail-info-card">
-                        <span>Atomic Radius</span>
-                        <strong id="detail-atomic-radius">
-                            —
-                        </strong>
                     </div>
-            
-                    <div class="detail-info-card">
-                        <span>Ionization Energy</span>
-                        <strong id="detail-ionization-energy">
-                            —
-                        </strong>
-                    </div>
-            
-                    <div class="detail-info-card">
-                        <span>Electron Affinity</span>
-                        <strong id="detail-electron-affinity">
-                            —
-                        </strong>
-                    </div>
-            
-                    <div class="detail-info-card">
-                        <span>Common Isotopes</span>
-                        <strong id="detail-isotopes">
-                            —
-                        </strong>
-                    </div>
-            
-                    <div class="detail-info-card detail-info-wide">
-                        <span>Density</span>
-                        <strong id="detail-density">
-                            —
-                        </strong>
-                    </div>
-            
-                </div>
-            
-            </section>
     
-            <!-- PHYSICAL PROPERTIES -->
-    
-            <section class="detail-section">
-    
-                <div class="detail-section-heading">
-                    Physical Properties
-                </div>
-    
-                <div class="detail-grid">
-    
-                    <div class="detail-info-card">
+                    <div class="atom-summary-item">
     
                         <span>
-                            Melting Point
+                            Valence
                         </span>
     
-                        <strong id="detail-melting-point">
-                            −259.16 °C
-                        </strong>
-    
-                    </div>
-    
-                    <div class="detail-info-card">
-    
-                        <span>
-                            Boiling Point
-                        </span>
-    
-                        <strong id="detail-boiling-point">
-                            −252.87 °C
+                        <strong id="atom-valence-count">
+                            1
                         </strong>
     
                     </div>
     
                 </div>
     
-            </section>
     
+                <div class="atom-legend">
     
-            <!-- DISCOVERY -->
+                    <span>
+                        <i class="atom-legend-dot proton"></i>
+                        Proton
+                    </span>
     
-            <section class="detail-section">
+                    <span>
+                        <i class="atom-legend-dot electron"></i>
+                        Electron
+                    </span>
     
-                <div class="detail-section-heading">
-                    Discovery
-                </div>
-    
-                <div class="detail-discovery">
-    
-                    <div>
-    
-                        <span>
-                            Discovery Year
-                        </span>
-    
-                        <strong id="detail-discovery-year">
-                            1766
-                        </strong>
-    
-                    </div>
+                    <span>
+                        <i class="atom-legend-ring"></i>
+                        Electron shell
+                    </span>
     
                 </div>
     
-            </section>
+            </div>
     
         </div>
     
