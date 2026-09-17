@@ -1775,8 +1775,8 @@ body {
     top: 50%;
     left: 50%;
 
-    width: 125px;
-    height: 125px;
+    width: 92px;
+    height: 92px;
 
     display: flex;
 
@@ -1786,25 +1786,13 @@ body {
     transform:
         translate(-50%, -50%);
 
-    border:
-        1px solid
-        rgba(125, 168, 255, 0.55);
+    border: none;
 
     border-radius: 50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(125, 168, 255, 0.16),
-            rgba(20, 39, 65, 0.9)
-        );
+    background: transparent;
 
-    box-shadow:
-        0 0 35px
-        rgba(125, 168, 255, 0.2),
-
-        inset 0 0 30px
-        rgba(125, 168, 255, 0.08);
+    box-shadow: none;
 }
 
 
@@ -1833,11 +1821,11 @@ body {
     top: 50%;
     left: 50%;
 
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
 
-    margin-left: -9.5px;
-    margin-top: -9.5px;
+    margin-left: -10px;
+    margin-top: -10px;
 
     border-radius: 50%;
 
@@ -1846,12 +1834,10 @@ body {
             var(--particle-x),
             var(--particle-y)
         );
-
-    box-shadow:
-        0 0 10px
-        rgba(255, 255, 255, 0.12);
 }
 
+
+/* PROTON */
 
 .nucleus-particle.proton {
 
@@ -1859,15 +1845,17 @@ body {
         radial-gradient(
             circle at 35% 30%,
             #ffffff,
-            #7da8ff 45%,
-            #3973e6
+            #7da8ff 38%,
+            #3973e6 75%
         );
 
     box-shadow:
-        0 0 13px
-        rgba(125, 168, 255, 0.5);
+        0 0 10px
+        rgba(125, 168, 255, 0.7);
 }
 
+
+/* NEUTRON */
 
 .nucleus-particle.neutron {
 
@@ -1875,67 +1863,24 @@ body {
         radial-gradient(
             circle at 35% 30%,
             #ffffff,
-            #8e9bad 45%,
-            #536174
+            #a1a9b8 38%,
+            #596579 75%
         );
 
     box-shadow:
-        0 0 10px
-        rgba(142, 155, 173, 0.3);
+        0 0 8px
+        rgba(142, 155, 173, 0.45);
 }
 
 
 /* =========================================
-   NUCLEUS INFO
+   REMOVE CENTER LABEL
 ========================================= */
 
 .atom-nucleus-info {
 
-    position: relative;
-
-    z-index: 20;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    pointer-events: none;
-
-    text-align: center;
+    display: none;
 }
-
-
-.atom-nucleus-info strong {
-
-    color:
-        #ffffff;
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    line-height: 1;
-}
-
-
-.atom-nucleus-info span {
-
-    margin-top: 4px;
-
-    color:
-        #7da8ff;
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-}
-
 /* =========================================
    ATOM SUMMARY
 ========================================= */
