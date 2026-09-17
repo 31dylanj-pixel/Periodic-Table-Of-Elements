@@ -1523,3 +1523,163 @@ document.addEventListener("keydown", event => {
     }
 
 });
+
+/* =========================================
+   ELEMENT SEARCH
+========================================= */
+
+const elementSearch =
+    document.getElementById(
+        "element-search"
+    );
+
+const clearElementSearch =
+    document.getElementById(
+        "clear-element-search"
+    );
+
+
+function normalizeSearchText(value) {
+
+    return String(value ?? "")
+        .toLowerCase()
+        .trim();
+
+}
+
+
+function getSearchableElementText(element) {
+
+    return [
+
+        element.name,
+        element.symbol,
+        element.atomic_number,
+        element.number,
+        element.atomic_mass
+
+    ]
+        .filter(value => value !== undefined && value !== null)
+        .join(" ")
+        .toLowerCase();
+
+}
+
+
+function getSearchableElements() {
+
+    return document.querySelectorAll(
+        ".element, .series-placeholder"
+    );
+
+}
+
+
+function clearSearchHighlights() {
+
+    getSearchableElements().forEach(element => {
+
+        element.classList.remove(
+            "search-match",
+            "search-dimmed"
+        );
+
+    });
+
+}
+
+
+function searchElements(query) {
+
+    const searchText =
+        normalizeSearchText(query);
+
+
+    const searchableElements =
+        getSearchableElements();
+
+
+    clearSearchHighlights();
+
+
+    if (!searchText) {
+
+        clearElementSearch?.classList.remove(
+            "visible"
+        );
+
+        return;
+
+    }
+
+
+    clearElementSearch?.classList.add(
+        "visible"
+    );
+
+
+    searchableElements.forEach(element => {
+
+        const searchableText =
+            getSearchableElementText(
+                element
+            );
+
+
+        const matches =
+            searchableText.includes(
+                searchText
+            );
+
+
+        element.classList.toggle(
+            "search-match",
+            matches
+        );
+
+        element.classList.toggle(
+            "search-dimmed",
+            !matches
+        );
+
+    });
+
+}
+
+
+/* SEARCH INPUT */
+
+elementSearch?.addEventListener(
+    "input",
+    event => {
+
+        searchElements(
+            event.target.value
+        );
+
+    }
+);
+
+
+/* CLEAR BUTTON */
+
+clearElementSearch?.addEventListener(
+    "click",
+    () => {
+
+        if (elementSearch) {
+
+            elementSearch.value = "";
+
+            elementSearch.focus();
+
+        }
+
+        clearSearchHighlights();
+
+        clearElementSearch.classList.remove(
+            "visible"
+        );
+
+    }
+);
