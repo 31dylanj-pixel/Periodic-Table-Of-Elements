@@ -1775,32 +1775,17 @@ body {
     top: 50%;
     left: 50%;
 
-    width: 105px;
-    height: 105px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
+    width: 1px;
+    height: 1px;
 
     transform:
         translate(-50%, -50%);
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.12);
+    background: transparent;
 
-    border-radius: 50%;
+    border: none;
 
-    background:
-        rgba(6, 13, 24, 0.72);
-
-    box-shadow:
-        0 0 25px
-        rgba(0, 0, 0, 0.45),
-
-        inset 0 0 18px
-        rgba(255, 255, 255, 0.025);
+    box-shadow: none;
 }
 
 
