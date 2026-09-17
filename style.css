@@ -2006,20 +2006,16 @@ body {
 .element.search-dimmed,
 .series-placeholder.search-dimmed {
     opacity: 0.14;
-
     filter: saturate(0.2);
-
     transform: none;
 }
 
 .element.search-dimmed:hover,
 .series-placeholder.search-dimmed:hover {
+    opacity: 0.14;
     transform: none;
-
     background: var(--card-background);
-
     border-color: var(--border);
-
     box-shadow: none;
 }
 
