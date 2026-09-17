@@ -623,6 +623,9 @@ function createAtomModel(details, element) {
     const atomOrbits =
         document.getElementById("atom-orbits");
 
+    const nucleus =
+        document.querySelector(".atom-nucleus");
+
     const nucleusNumber =
         document.getElementById("atom-nucleus-number");
 
@@ -636,26 +639,30 @@ function createAtomModel(details, element) {
         document.getElementById("atom-valence-count");
 
 
-    if (!atomOrbits) {
+    if (!atomOrbits || !nucleus) {
         return;
     }
 
 
     /*
-        Clear the previous atom.
+        Clear previous atom.
     */
 
     atomOrbits.innerHTML = "";
+
+    nucleus.innerHTML = "";
 
 
     /*
         Get electron shell data.
 
-        Example:
+        Examples:
 
-        Hydrogen → [1]
-        Carbon   → [2, 4]
-        Sodium   → [2, 8, 1]
+        H  → [1]
+        He → [2]
+        C  → [2, 4]
+        O  → [2, 6]
+        Na → [2, 8, 1]
     */
 
     const shells =
@@ -665,19 +672,7 @@ function createAtomModel(details, element) {
 
 
     /*
-        Update nucleus.
-    */
-
-    if (nucleusNumber) {
-
-        nucleusNumber.textContent =
-            element.number;
-
-    }
-
-
-    /*
-        Calculate total electrons.
+        Total electrons.
     */
 
     const totalElectrons =
@@ -686,6 +681,18 @@ function createAtomModel(details, element) {
                 total + Number(count || 0),
             0
         );
+
+
+    /*
+        Update summary.
+    */
+
+    if (nucleusNumber) {
+
+        nucleusNumber.textContent =
+            element.number;
+
+    }
 
 
     if (electronCount) {
@@ -715,7 +722,144 @@ function createAtomModel(details, element) {
 
 
     /*
-        Create one orbit for each shell.
+        =====================================
+        NUCLEUS
+        =====================================
+    */
+
+    const nucleusCore =
+        document.createElement("div");
+
+    nucleusCore.className =
+        "atom-nucleus-core";
+
+
+    /*
+        Approximate neutron count.
+
+        Atomic mass is an average, so this is
+        only used as a visual approximation.
+    */
+
+    const approximateMass =
+        Math.round(
+            Number(element.mass) || element.number
+        );
+
+
+    const protonCount =
+        Number(element.number);
+
+
+    const neutronCount =
+        Math.max(
+            0,
+            approximateMass - protonCount
+        );
+
+
+    /*
+        Create a limited number of visible
+        particles so heavy elements don't
+        create hundreds of DOM nodes.
+
+        The actual counts are shown in the
+        labels.
+    */
+
+    const visibleParticles =
+        Math.min(
+            protonCount + neutronCount,
+            36
+        );
+
+
+    for (
+        let i = 0;
+        i < visibleParticles;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("span");
+
+
+        const isProton =
+            i % 2 === 0;
+
+
+        particle.className =
+            `nucleus-particle ${
+                isProton
+                    ? "proton"
+                    : "neutron"
+            }`;
+
+
+        /*
+            Random-looking but deterministic
+            particle placement.
+        */
+
+        const angle =
+            i * 2.39996;
+
+
+        const radius =
+            8 +
+            (i % 5) * 5;
+
+
+        particle.style.setProperty(
+            "--particle-x",
+            `${Math.cos(angle) * radius}px`
+        );
+
+
+        particle.style.setProperty(
+            "--particle-y",
+            `${Math.sin(angle) * radius}px`
+        );
+
+
+        nucleusCore.appendChild(
+            particle
+        );
+
+    }
+
+
+    /*
+        Nucleus count display.
+    */
+
+    const nucleusInfo =
+        document.createElement("div");
+
+    nucleusInfo.className =
+        "atom-nucleus-info";
+
+
+    nucleusInfo.innerHTML = `
+        <strong>${element.number}</strong>
+        <span>p⁺</span>
+    `;
+
+
+    nucleus.appendChild(
+        nucleusCore
+    );
+
+
+    nucleus.appendChild(
+        nucleusInfo
+    );
+
+
+    /*
+        =====================================
+        ELECTRON SHELLS
+        =====================================
     */
 
     shells.forEach(
@@ -730,13 +874,16 @@ function createAtomModel(details, element) {
 
 
             /*
-                The first shell starts at
-                105px and each additional
-                shell expands outward.
+                Shell sizes.
+
+                Shell 1 → 110px
+                Shell 2 → 165px
+                Shell 3 → 220px
+                etc.
             */
 
             const size =
-                105 +
+                110 +
                 shellIndex * 55;
 
 
@@ -747,18 +894,76 @@ function createAtomModel(details, element) {
                 `${size}px`;
 
 
-            /*
-                Store shell information.
-
-                We'll use this in Phase 3
-                when we add orbital animation.
-            */
-
             orbit.dataset.shell =
                 shellIndex + 1;
 
+
             orbit.dataset.electrons =
                 electronNumber;
+
+
+            /*
+                Create electrons.
+            */
+
+            const electronCountForShell =
+                Number(electronNumber) || 0;
+
+
+            for (
+                let i = 0;
+                i < electronCountForShell;
+                i++
+            ) {
+
+                const electron =
+                    document.createElement("span");
+
+
+                electron.className =
+                    "atom-electron";
+
+
+                /*
+                    Evenly distribute electrons
+                    around the shell.
+
+                    This will be replaced by
+                    actual animation in Phase 3.
+                */
+
+                const angle =
+                    (
+                        360 /
+                        electronCountForShell
+                    ) * i;
+
+
+                electron.style.setProperty(
+                    "--electron-angle",
+                    `${angle}deg`
+                );
+
+
+                electron.style.setProperty(
+                    "--electron-radius",
+                    `${size / 2}px`
+                );
+
+
+                electron.dataset.shell =
+                    shellIndex + 1;
+
+
+                electron.dataset.index =
+                    i;
+
+
+                orbit.appendChild(
+                    electron
+                );
+
+            }
 
 
             atomOrbits.appendChild(
@@ -769,6 +974,7 @@ function createAtomModel(details, element) {
     );
 
 }
+
 
 /* =========================================
    OPEN DETAIL VIEW
