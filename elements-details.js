@@ -614,6 +614,120 @@ async function loadElementData() {
 
 }
 
+/* =========================================================
+   ATOM ANIMATION
+========================================================= */
+
+let atomAnimationFrame = null;
+
+let atomAnimationRunning = false;
+
+let atomAnimationTime = 0;
+
+
+function animateAtom() {
+
+    if (!atomAnimationRunning) {
+        return;
+    }
+
+    const atomOrbits =
+        document.getElementById("atom-orbits");
+
+    if (!atomOrbits) {
+        return;
+    }
+
+    const orbits =
+        atomOrbits.querySelectorAll(".atom-orbit");
+
+    atomAnimationTime += 0.016;
+
+    orbits.forEach((orbit, shellIndex) => {
+
+        const electrons =
+            orbit.querySelectorAll(".atom-electron");
+
+        const radius =
+            orbit.offsetWidth / 2;
+
+        /*
+         * Inner shells move faster.
+         * Outer shells move progressively slower.
+         */
+        const speed =
+            1.8 /
+            (1 + shellIndex * 0.45);
+
+        electrons.forEach(
+            (electron, electronIndex) => {
+
+                const electronCount =
+                    electrons.length;
+
+                const startingAngle =
+                    (
+                        electronIndex /
+                        electronCount
+                    ) *
+                    Math.PI *
+                    2;
+
+                const angle =
+                    startingAngle +
+                    atomAnimationTime *
+                    speed;
+
+                const x =
+                    Math.cos(angle) *
+                    radius;
+
+                const y =
+                    Math.sin(angle) *
+                    radius;
+
+                electron.style.transform =
+                    `translate(${x}px, ${y}px)`;
+            }
+        );
+    });
+
+    atomAnimationFrame =
+        requestAnimationFrame(
+            animateAtom
+        );
+}
+
+
+function startAtomAnimation() {
+
+    if (atomAnimationRunning) {
+        return;
+    }
+
+    atomAnimationRunning = true;
+
+    atomAnimationFrame =
+        requestAnimationFrame(
+            animateAtom
+        );
+}
+
+
+function stopAtomAnimation() {
+
+    atomAnimationRunning = false;
+
+    if (atomAnimationFrame) {
+
+        cancelAnimationFrame(
+            atomAnimationFrame
+        );
+
+        atomAnimationFrame = null;
+    }
+}
+
 /* =========================================
    ATOM MODEL
 ========================================= */
@@ -625,9 +739,6 @@ function createAtomModel(details, element) {
 
     const nucleus =
         document.querySelector(".atom-nucleus");
-
-    const nucleusNumber =
-        document.getElementById("atom-nucleus-number");
 
     const electronCount =
         document.getElementById("atom-electron-count");
@@ -688,14 +799,6 @@ function createAtomModel(details, element) {
     /*
         Update summary.
     */
-
-    if (nucleusNumber) {
-
-        nucleusNumber.textContent =
-            element.number;
-
-    }
-
 
     if (electronCount) {
 
@@ -986,6 +1089,8 @@ function openElementDetails(
        element
    );
 
+   startAtomAnimation();
+   
     /* -------------------------------------
        BASIC INFORMATION
     ------------------------------------- */
@@ -1292,6 +1397,8 @@ function capitalize(
 
 function closeElementDetails() {
 
+    stopAtomAnimation();
+
     elementModal.classList.remove(
         "active"
     );
@@ -1300,7 +1407,6 @@ function closeElementDetails() {
         "";
 
 }
-
 
 /* =========================================
    ELEMENT CLICK HANDLER
