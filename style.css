@@ -2778,6 +2778,18 @@ body {
     color: var(--text);
 }
 
+/* Hide the browser's built-in search clear button */
+#element-search::-webkit-search-cancel-button,
+#element-search::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+#element-search {
+    appearance: none;
+    -webkit-appearance: none;
+}
 
 /* =========================================
    SEARCH HIGHLIGHTING
