@@ -1531,6 +1531,9 @@ document.addEventListener("keydown", event => {
 const elementSearch =
     document.getElementById("element-search");
 
+const clearElementSearch =
+    document.getElementById("clear-element-search");
+
 function getSearchableElements() {
     return document.querySelectorAll(
         ".element, .series-placeholder"
