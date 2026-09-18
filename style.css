@@ -1740,7 +1740,7 @@ body {
     background:
         radial-gradient(
             circle at 35% 30%,
-            #ffffff,
+            #ffffff 0%,
             #dbe8ff 40%,
             #7da8ff 75%
         );
@@ -1752,14 +1752,9 @@ body {
         0 0 16px
         rgba(125, 168, 255, 0.45);
 
-    transform:
-        rotate(var(--electron-angle))
-        translateX(var(--electron-radius));
-
-    transform-origin:
-        center center;
-
     z-index: 8;
+
+    will-change: transform;
 }
 
 /* =========================================
